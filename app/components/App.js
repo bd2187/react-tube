@@ -4,9 +4,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import SelectedVideo from './SelectedVideo';
 import Videos from './Videos';
-
-import api from '../utils/api';
-
+import YoutubeSearch from '../utils/api';
 
 /*
 Tentative Components Heirarchy:
@@ -19,14 +17,25 @@ Tentative Components Heirarchy:
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchTerm: 'Star Wars',
+      videosArr: []
+    }
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+  handleSearch(searchTerm) {
+    YoutubeSearch(searchTerm, function(videos) {
+      this.setState({videos: videos});
+      console.log(videos);
+    }.bind(this));
   }
   componentDidMount() {
-    api()
+    this.handleSearch(this.state.searchTerm);
   }
   render() {
     return (
       <div className="container">
-        <SearchBar />
+        <SearchBar onSubmit={this.handleSearch}/>
         <SelectedVideo />
         <Videos />
       </div>
