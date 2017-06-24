@@ -5,6 +5,9 @@ import SearchBar from './SearchBar';
 import SelectedVideo from './SelectedVideo';
 import Videos from './Videos';
 
+import api from '../utils/api';
+
+
 /*
 Tentative Components Heirarchy:
 - App
@@ -16,6 +19,9 @@ Tentative Components Heirarchy:
 class App extends React.Component {
   constructor(props) {
     super(props);
+  }
+  componentDidMount() {
+    api()
   }
   render() {
     return (
