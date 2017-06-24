@@ -19,28 +19,35 @@ class App extends React.Component {
     super(props);
     this.state = {
       searchTerm: 'Star Wars',
-      videosArr: []
+      videosArr: null
     }
     this.handleSearch = this.handleSearch.bind(this);
   }
   handleSearch(searchTerm) {
-    YoutubeSearch(searchTerm, function(videos) {
-      this.setState({videos: videos});
-      console.log(videos);
+    YoutubeSearch(searchTerm, function(videosArr = []) {
+      this.setState({videosArr});
     }.bind(this));
   }
   componentDidMount() {
     this.handleSearch(this.state.searchTerm);
   }
   render() {
+    var videosArr = this.state.videosArr;
+    console.log(videosArr);
     return (
       <div className="container">
         <SearchBar onSubmit={this.handleSearch}/>
-        <SelectedVideo />
-        <Videos />
+        { !videosArr
+          ? <p>Loading</p>
+          : <div>
+              <SelectedVideo videos={videosArr}/>
+              <Videos />
+          </div>
+        }
+
+
       </div>
     );
   }
 }
-
 export default App;
