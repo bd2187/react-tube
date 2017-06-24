@@ -1,6 +1,9 @@
 "use strict";
 
 import React from 'react';
+import SearchBar from './SearchBar';
+import SelectedVideo from './SelectedVideo';
+import Videos from './Videos';
 
 /*
 Tentative Components Heirarchy:
@@ -17,7 +20,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>React-Tube</h1>
+        <SearchBar />
+        <SelectedVideo />
+        <Videos />
       </div>
     );
   }
