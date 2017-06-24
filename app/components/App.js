@@ -33,19 +33,16 @@ class App extends React.Component {
   }
   render() {
     var videosArr = this.state.videosArr;
-    console.log(videosArr);
     return (
       <div className="container">
         <SearchBar onSubmit={this.handleSearch}/>
         { !videosArr
           ? <p>Loading</p>
           : <div>
-              <SelectedVideo videos={videosArr}/>
-              <Videos />
+              <SelectedVideo selectedVideo={videosArr[0]}/>
+              <Videos videosArr={videosArr}/>
           </div>
         }
-
-
       </div>
     );
   }
