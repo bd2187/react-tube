@@ -12,8 +12,7 @@ class SelectedVideo extends React.Component {
     return (
       <div className="selected-video">
         <iframe
-          width="420"
-          height="315"
+          allowFullScreen
           src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}`}>
         </iframe>
         <h3>{selectedVideo.snippet.title}</h3>

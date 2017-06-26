@@ -4,5 +4,38 @@
 }
 
 body {
+  background: yellow;
+}
+
+#app {
+  width: 100%;
+}
+
+.container {
+  background: blue;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.search-bar {
   background: green;
+  text-align: center;
+  padding: .7em 0;
+}
+
+.search-bar input {
+  padding: .2em;
+  width: 50%;
+  max-width: 582px;
+}
+
+.selected-video {
+  background: red;
+  position: relative;
+}
+
+.selected-video iframe {
+  width: 100%;
+  height: 56.25vw;
+  /* 100/56.25 = 560/315 = 1.778 */
 }
