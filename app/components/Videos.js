@@ -13,10 +13,17 @@ class Videos extends React.Component {
   }
   renderLi(video, index) {
     return (
-      <li key={video.etag} onClick={() => this.changeDisplayedVideo(index)}>
-        <img src={video.snippet.thumbnails.default.url}/>
-        <h2>{video.snippet.title}</h2>
-        <p>{video.snippet.description}</p>
+      <li
+        key={video.etag}
+        onClick={() => this.changeDisplayedVideo(index)}
+        className="video-list-item clearfix">
+        <img
+          src={video.snippet.thumbnails.high.url}
+          alt={`${video.snippet.title} video`}
+          className="video-thumbnail"/>
+        <div className="video-information">
+          <h2>{video.snippet.title}</h2>
+        </div>
       </li>
     );
   }

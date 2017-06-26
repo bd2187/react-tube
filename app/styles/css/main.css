@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+h2, p {
+  margin: 0;
+}
+
 body {
   background: yellow;
 }
@@ -38,4 +42,37 @@ body {
   width: 100%;
   height: 56.25vw;
   /* 100/56.25 = 560/315 = 1.778 */
+  border: none;
+}
+
+.video-list-item {
+  background: orange;
+  margin: .5em 0;
+}
+
+.video-list-item:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.video-list-item .video-information {
+  background: green;
+  width: 70%;
+  font-size: .7em;
+  padding-left: 1em;
+}
+
+.video-list-item .video-thumbnail {
+  width: 30%;
+}
+
+.video-list-item .video-thumbnail,
+.video-list-item .video-information {
+  float: left;
+}
+
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
 }
