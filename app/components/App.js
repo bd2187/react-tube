@@ -19,14 +19,21 @@ class App extends React.Component {
     super(props);
     this.state = {
       searchTerm: 'Star Wars',
-      videosArr: null
+      videosArr: null,
+      selectedVideo: null
     }
     this.handleSearch = this.handleSearch.bind(this);
+    this.changeSelectedVideo = this.changeSelectedVideo.bind(this);
   }
   handleSearch(searchTerm) {
     YoutubeSearch(searchTerm, function(videosArr = []) {
       this.setState({videosArr, selectedVideo: videosArr[0]});
     }.bind(this));
+  }
+  changeSelectedVideo(video) {
+    this.setState(function(){
+      return {selectedVideo: video}
+    });
   }
   componentDidMount() {
     this.handleSearch(this.state.searchTerm);
@@ -39,8 +46,12 @@ class App extends React.Component {
         { !videosArr
           ? <p>Loading</p>
           : <div>
-              <SelectedVideo videosArr={videosArr}/>
-              <Videos videosArr={videosArr}/>
+              <SelectedVideo
+                selectedVideo={this.state.selectedVideo}
+                changeSelectedVideo={this.changeSelectedVideo}/>
+              <Videos
+                videosArr={videosArr}
+                changeSelectedVideo={this.changeSelectedVideo}/>
           </div>
         }
       </div>
