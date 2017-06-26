@@ -21,7 +21,7 @@ class Videos extends React.Component {
           src={video.snippet.thumbnails.high.url}
           alt={`${video.snippet.title} video`}
           className="video-thumbnail"/>
-        <div className="video-information">
+        <div className="video-title">
           <h2>{video.snippet.title}</h2>
         </div>
       </li>

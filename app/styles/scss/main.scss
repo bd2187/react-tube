@@ -1,13 +1,17 @@
+// variables
+$light-grey: #E8E8E8;
+
+
 * {
   box-sizing: border-box;
 }
 
-h2, p {
+h2, h3, p {
   margin: 0;
 }
 
 body {
-  background: yellow;
+  background: $light-grey;
 }
 
 #app {
@@ -15,15 +19,21 @@ body {
 }
 
 .container {
-  background: blue;
+  // background: blue;
   width: 95%;
   margin: 0 auto;
+  margin-top: 60px;
 }
 
 .search-bar {
-  background: green;
+  background: white;
   text-align: center;
   padding: .7em 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
   input {
     padding: .2em;
     width: 50%;
@@ -32,13 +42,25 @@ body {
 }
 
 .selected-video {
-  background: red;
+  // background: red;
   position: relative;
   iframe {
     width: 100%;
     height: 56.25vw; /* 100/56.25 = 560/315 = 1.778 */
     border: none;
+    // margin: 1em 0;
   }
+  .video-description {
+    background: white;
+    margin: .3em 0;
+    padding: .8em;
+  }
+}
+
+ul {
+  padding: .8em;
+  background: white;
+  margin: .3em 0;
 }
 
 .video-list-item {
@@ -49,7 +71,7 @@ body {
     color: blue;
   }
 
-  .video-information {
+  .video-title {
     background: green;
     width: 70%;
     font-size: .7em;
@@ -59,7 +81,7 @@ body {
     width: 30%;
   }
   .video-thumbnail,
-  .video-information {
+  .video-title {
     float: left;
   }
 }
