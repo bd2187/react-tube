@@ -25,7 +25,7 @@ class App extends React.Component {
   }
   handleSearch(searchTerm) {
     YoutubeSearch(searchTerm, function(videosArr = []) {
-      this.setState({videosArr});
+      this.setState({videosArr, selectedVideo: videosArr[0]});
     }.bind(this));
   }
   componentDidMount() {
@@ -39,7 +39,7 @@ class App extends React.Component {
         { !videosArr
           ? <p>Loading</p>
           : <div>
-              <SelectedVideo selectedVideo={videosArr[0]}/>
+              <SelectedVideo videosArr={videosArr}/>
               <Videos videosArr={videosArr}/>
           </div>
         }
