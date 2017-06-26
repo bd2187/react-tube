@@ -8,7 +8,6 @@ class SelectedVideo extends React.Component {
     super(props);
   }
   render() {
-    console.log(this.props);
     var selectedVideo = this.props.selectedVideo;
     return (
       <div className="selected-video">

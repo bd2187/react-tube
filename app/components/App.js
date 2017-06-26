@@ -6,19 +6,11 @@ import SelectedVideo from './SelectedVideo';
 import Videos from './Videos';
 import YoutubeSearch from '../utils/api';
 
-/*
-Tentative Components Heirarchy:
-- App
-- SearchBar
-- Selected Youtube video
-- Video List
-*/
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: 'Star Wars',
+      searchTerm: 'React JS',
       videosArr: null,
       selectedVideo: null
     }
