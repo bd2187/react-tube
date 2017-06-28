@@ -64,15 +64,16 @@ ul {
 }
 
 .video-list-item {
-  background: orange;
+  // background: orange;
   margin: .5em 0;
+  transition: all .3s;
   &:hover {
     cursor: pointer;
     color: blue;
   }
 
   .video-title {
-    background: green;
+    // background: green;
     width: 70%;
     font-size: .7em;
     padding-left: 1em;
