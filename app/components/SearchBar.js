@@ -26,6 +26,8 @@ class SearchBar extends React.Component {
     var searchValue = this.state.searchValue;
     return (
       <div className="search-bar">
+      <img className="logo"
+        src={require('../youtube.png')} alt="youtube logo"/>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

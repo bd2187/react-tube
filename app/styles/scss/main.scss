@@ -35,6 +35,10 @@ body {
   z-index: 10;
   width: 100%;
 
+  .logo {
+    width: 15%;
+  }
+
   input[type="text"],
   button {
     padding: .5em;

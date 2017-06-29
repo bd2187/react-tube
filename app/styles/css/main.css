@@ -32,6 +32,10 @@ body {
   width: 100%;
 }
 
+.search-bar .logo {
+  width: 15%;
+}
+
 .search-bar input[type="text"],
 .search-bar button {
   padding: .5em;
