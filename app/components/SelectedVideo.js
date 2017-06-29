@@ -13,16 +13,15 @@ function SelectedVideo(props) {
       </iframe>
       <div className="video-description">
         <h3>{selectedVideo.snippet.title}</h3>
-        <p>Published on {selectedVideo.snippet.publishedAt}</p>
-        <p>{selectedVideo.snippet.description}</p>
+        <p className="publish-date">Published on {selectedVideo.snippet.publishedAt}</p>
+        <p className="description">{selectedVideo.snippet.description}</p>
       </div>
     </div>
   );
 }
 
 SelectedVideo.propTypes = {
-  selectedVideo: PropTypes.object.isRequired,
-  changeSelectedVideo: PropTypes.func.isRequired
+  selectedVideo: PropTypes.object.isRequired
 }
 
 export default SelectedVideo;

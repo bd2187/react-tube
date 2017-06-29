@@ -39,8 +39,7 @@ class App extends React.Component {
           ? <p>Loading</p>
           : <div>
               <SelectedVideo
-                selectedVideo={this.state.selectedVideo}
-                changeSelectedVideo={this.changeSelectedVideo}/>
+                selectedVideo={this.state.selectedVideo}/>
               <Videos
                 videosArr={videosArr}
                 changeSelectedVideo={this.changeSelectedVideo}/>

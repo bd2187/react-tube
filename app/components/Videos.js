@@ -21,15 +21,12 @@ class Videos extends React.Component {
           src={video.snippet.thumbnails.high.url}
           alt={`${video.snippet.title} video`}
           className="video-thumbnail"/>
-        <div className="video-title">
-          <h2>{video.snippet.title}</h2>
-        </div>
+          <h2 className="video-title">{video.snippet.title}</h2>
       </li>
     );
   }
   render() {
     var videosArr = this.props.videosArr;
-    console.log(this.props);
     return (
       <div className="videos">
         <ul>
