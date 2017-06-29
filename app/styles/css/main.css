@@ -13,27 +13,60 @@ body {
 
 #app {
   width: 100%;
+  padding-top: 4.665em;
 }
 
 .container {
   width: 95%;
   margin: 0 auto;
-  margin-top: 60px;
 }
 
 .search-bar {
   background: white;
   text-align: center;
-  padding: .7em 0;
+  padding: .5em;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
   width: 100%;
+  height: 4.165em;
+  border-bottom: 1.3px solid #E8E8E8;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.search-bar .logo {
-  width: 15%;
+.search-bar .logo-link {
+  width: 12%;
+  max-width: 65.39px;
+  display: block;
+}
+
+.search-bar .logo-link .logo {
+  width: 100%;
+  margin: 0;
+  display: block;
+}
+
+.search-bar .form-box {
+  width: 88%;
+  display: block;
+  text-align: right;
+}
+
+.search-bar .logo-link,
+.search-bar .form-box {
+  float: left;
 }
 
 .search-bar input[type="text"],
@@ -56,7 +89,7 @@ body {
 
 .search-bar input[type="text"]:focus {
   outline: none;
-  border: .3px solid darkblue;
+  border: 1px solid #3449BD;
 }
 
 .search-bar button {
@@ -133,7 +166,7 @@ ul {
 
 .video-list-item:hover {
   cursor: pointer;
-  color: blue;
+  color: #4460F7;
 }
 
 .video-list-item .video-title {
