@@ -2,7 +2,22 @@
 $light-grey: #E8E8E8;
 $lightGreyBorder: 1.3px solid $light-grey;
 $darkBlue: #3449BD;
+$breakPoint: 660px;
 
+// mixins
+@mixin mediaQuery ($pixels) {
+  @media screen and (min-width: $pixels) {
+    @content;
+  }
+}
+
+@mixin fixedPosition($top, $left, $right, $z-index) {
+  position: fixed;
+  top: $top;
+  left: $left;
+  right: $right;
+  z-index: $z-index;
+}
 
 * {
   box-sizing: border-box;
@@ -22,21 +37,21 @@ body {
 }
 
 .container {
-  // background: blue;
   width: 95%;
   margin: 0 auto;
+  max-width: 1600px;
 }
 
 .search-bar {
-  background: white;
-  text-align: center;
-  padding: .5em;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  @include fixedPosition(0, 0, 0, 10);
+  max-width: 1600px;
   width: 100%;
   height: 4.165em;
+  padding: .5em;
+
+  margin: 0 auto;
+  background: white;
+  text-align: center;
 
   border-bottom: $lightGreyBorder;
 
@@ -109,18 +124,51 @@ body {
 
 } // end .search-bar
 
-.selected-video {
-  // background: red;
-  position: relative;
-  iframe {
-    width: 100%;
-    height: 56.25vw; /* 100/56.25 = 560/315 = 1.778 */
-    border: none;
+.main-box {
+
+  @include mediaQuery($breakPoint) {
+    max-width: 81.25em; /*1300px / 16em*/
+    margin: 0 auto;
   }
+
+  .selected-video,
+  .videos {
+    @include mediaQuery($breakPoint) {
+      float: left;
+    }
+  }
+} // end .main-box
+
+.selected-video {
+  position: relative;
+
+  .aspect-ratio {
+    @include mediaQuery($breakPoint) {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 51%;
+    }
+    iframe {
+      width: 100%;
+      height: 56.25vw; /* 100/56.25 = 560/315 = 1.778 */
+      border: none;
+      @include mediaQuery($breakPoint){
+        position: absolute;
+        height: 100%;
+        left: 0; top: 0;
+      }
+    } // end iframe
+  } // end .aspect-ratio
+
+
   .video-description {
     background: white;
     margin: .3em 0;
     padding: .8em;
+    @include mediaQuery($breakPoint) {
+      margin-top: .5em;
+    }
 
     h3,
     .publish-date,
@@ -139,12 +187,22 @@ body {
       font-weight: bold;
     }
   } // end .video-description
-}
 
-ul {
+  @include mediaQuery($breakPoint) {
+    width: 60%;
+    padding-right: .5em;
+  }
+} // end .selected-video
+
+// ul
+.videos {
   padding: .8em;
   background: white;
   margin: .5em 0;
+  @include mediaQuery($breakPoint) {
+    margin: 0;
+    width: 40%;
+  }
 }
 
 .video-list-item {
@@ -171,59 +229,10 @@ ul {
   } // end .video-title
 }
 
-ul,
+.videos,
 .search-bar,
 .video-description {
   box-shadow: 0px 1px 7px rgba(0,0,0,0.2);
-}
-
-// .selected-video {
-//   max-width: 53.375em;
-//
-// }
-// ul {
-//   max-width: 28.024em;
-//   margin: 0 auto;
-// }
-@media screen and (min-width: 660px) {
-
-  .main-box {
-    max-width: 81.25em; /*1300px / 16em*/
-    margin: 0 auto;
-  }
-
-  .selected-video,
-  .videos {
-    float: left;
-  }
-
-  ul {
-    margin: 0;
-  }
-
-  .selected-video {
-    width: 60%;
-    padding-right: .5em;
-    .aspect-ratio {
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 51%;
-      iframe {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0; top: 0;
-      }
-    }
-    .video-description {
-      margin-top: .5em;
-    }
-  }
-
-  .videos {
-    width: 40%;
-  }
 }
 
 
