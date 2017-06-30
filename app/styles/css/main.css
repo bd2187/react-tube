@@ -16,26 +16,24 @@ body {
   padding-top: 4.665em;
 }
 
+.container,
+.search-bar,
+.fa-search {
+  margin: 0 auto;
+}
+
 .container {
   width: 95%;
-  margin: 0 auto;
   max-width: 1600px;
 }
 
 .search-bar {
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 10;
-  max-width: 1600px;
-  width: 100%;
-  height: 4.165em;
-  padding: .5em;
-  margin: 0 auto;
-  background: white;
-  text-align: center;
-  border-bottom: 1.3px solid #E8E8E8;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,6 +46,19 @@ body {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  max-width: 1600px;
+  width: 100%;
+  height: 4.165em;
+  padding: .5em;
+  background: white;
+  text-align: center;
+  border-bottom: 1.3px solid #E8E8E8;
+}
+
+@media screen and (min-width: 660px) {
+  .search-bar form {
+    text-align: center;
+  }
 }
 
 .search-bar .logo-link {
@@ -106,10 +117,11 @@ body {
 
 .search-bar button .fa-search {
   position: absolute;
-  margin: 0 auto;
   top: 50%;
-  left: 0;
   right: 0;
+  bottom: inherit;
+  left: 0;
+  z-index: 1;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -157,9 +169,12 @@ body {
 @media screen and (min-width: 660px) {
   .selected-video .aspect-ratio iframe {
     position: absolute;
-    height: 100%;
-    left: 0;
     top: 0;
+    right: inherit;
+    bottom: inherit;
+    left: 0;
+    z-index: 1;
+    height: 100%;
   }
 }
 

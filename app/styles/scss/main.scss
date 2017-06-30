@@ -11,12 +11,23 @@ $breakPoint: 660px;
   }
 }
 
-@mixin fixedPosition($top, $left, $right, $z-index) {
-  position: fixed;
+@mixin positioning($position, $top, $right, $bottom, $left, $z-index) {
+  position: $position;
   top: $top;
-  left: $left;
   right: $right;
+  bottom: $bottom;
+  left: $left;
   z-index: $z-index;
+}
+
+@mixin flexBox($justify-content, $align-items) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin horizontalCenter($vertical) {
+  margin: $vertical auto;
 }
 
 * {
@@ -36,28 +47,35 @@ body {
   padding-top: 4.665em;
 }
 
+.container,
+.search-bar,
+.fa-search {
+  @include horizontalCenter(0);
+}
+
 .container {
   width: 95%;
-  margin: 0 auto;
   max-width: 1600px;
 }
 
 .search-bar {
-  @include fixedPosition(0, 0, 0, 10);
+  @include positioning(fixed, 0, 0, 0, 0, 10);
+  @include flexBox(center, center);
   max-width: 1600px;
   width: 100%;
   height: 4.165em;
   padding: .5em;
 
-  margin: 0 auto;
   background: white;
   text-align: center;
 
   border-bottom: $lightGreyBorder;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  form {
+    @include mediaQuery($breakPoint) {
+      text-align: center;
+    }
+  }
 
   .logo-link {
     width: 12%;
@@ -110,11 +128,7 @@ body {
     position: relative;
 
     .fa-search {
-      position: absolute;
-      margin: 0 auto;
-      top: 50%;
-      left: 0;
-      right: 0;
+      @include positioning(absolute, 50%, 0, inherit, 0, 1);
       transform: translateY(-50%);
     }
     &:focus {
@@ -128,7 +142,7 @@ body {
 
   @include mediaQuery($breakPoint) {
     max-width: 81.25em; /*1300px / 16em*/
-    margin: 0 auto;
+    @include horizontalCenter(0);
   }
 
   .selected-video,
@@ -154,9 +168,10 @@ body {
       height: 56.25vw; /* 100/56.25 = 560/315 = 1.778 */
       border: none;
       @include mediaQuery($breakPoint){
-        position: absolute;
+        @include positioning(absolute, 0, inherit, inherit, 0, 1);
+        // position: absolute;
         height: 100%;
-        left: 0; top: 0;
+        // left: 0; top: 0;
       }
     } // end iframe
   } // end .aspect-ratio
