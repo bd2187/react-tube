@@ -36,7 +36,7 @@ class App extends React.Component {
       <div className="container">
         <SearchBar onSubmit={this.handleSearch}/>
         { !videosArr
-          ? <p>Loading</p>
+          ? <div className="loader"></div>
           : <div className="main-box clearfix">
               <SelectedVideo
                 selectedVideo={this.state.selectedVideo}/>
