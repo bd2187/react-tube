@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Logo from '../utils/img/youtube.png';
+import Link from './Link';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -27,10 +27,7 @@ class SearchBar extends React.Component {
     var searchValue = this.state.searchValue;
     return (
       <div className="search-bar clearfix">
-        <a href="#" className="logo-link">
-          <img className="logo"
-            src={Logo} alt="youtube logo"/>
-        </a>
+        <Link resetState={this.props.onSubmit}/>
         <div className="form-box">
           <form onSubmit={this.handleSubmit}>
             <input
@@ -46,7 +43,7 @@ class SearchBar extends React.Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
 
