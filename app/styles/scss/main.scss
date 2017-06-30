@@ -1,6 +1,8 @@
 @import 'variables';
 @import 'mixins';
 
+// ============ Default
+
 * {
   box-sizing: border-box;
 }
@@ -11,6 +13,7 @@ h2, h3, p {
 
 body {
   background: $light-grey;
+  font-family: 'Roboto', sans-serif;
 }
 
 #app {
@@ -28,6 +31,9 @@ body {
   width: 95%;
   max-width: 1600px;
 }
+
+// ============
+
 
 .search-bar {
   @include positioning(fixed, 0, 0, 0, 0, 10);
@@ -75,6 +81,9 @@ body {
     padding: .5em;
     height: 2em;
     font-size: 1em;
+    @include mediaQuery(1000px) {
+      font-size: 1.12em;
+    }
     border: $lightGreyBorder;
   }
 
@@ -145,7 +154,6 @@ body {
     } // end iframe
   } // end .aspect-ratio
 
-
   .video-description {
     background: white;
     margin: .3em 0;
@@ -161,10 +169,18 @@ body {
     }
 
     .publish-date,
-    .description { font-size: .8em; }
+    .description {
+      font-size: .8em;
+      @include mediaQuery(1000px) {
+        font-size: 1em;
+      }
+    }
 
     h3 {
       font-size: 1.2em;
+      @include mediaQuery(1000px) {
+        font-size: 1.5em;
+      }
     }
 
     .publish-date {
@@ -178,7 +194,6 @@ body {
   }
 } // end .selected-video
 
-// ul
 .videos {
   padding: .8em;
   background: white;
@@ -201,6 +216,9 @@ body {
     width: 70%;
     font-size: .8em;
     padding-left: 1em;
+    @include mediaQuery(1000px) {
+      font-size: 1em;
+    }
   }
   .video-thumbnail {
     width: 30%;
