@@ -1,34 +1,5 @@
-// variables
-$light-grey: #E8E8E8;
-$lightGreyBorder: 1.3px solid $light-grey;
-$darkBlue: #3449BD;
-$breakPoint: 660px;
-
-// mixins
-@mixin mediaQuery ($pixels) {
-  @media screen and (min-width: $pixels) {
-    @content;
-  }
-}
-
-@mixin positioning($position, $top, $right, $bottom, $left, $z-index) {
-  position: $position;
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
-  z-index: $z-index;
-}
-
-@mixin flexBox($justify-content, $align-items) {
-  display: flex;
-  justify-content: $justify-content;
-  align-items: $align-items;
-}
-
-@mixin horizontalCenter($vertical) {
-  margin: $vertical auto;
-}
+@import 'variables';
+@import 'mixins';
 
 * {
   box-sizing: border-box;
@@ -169,9 +140,7 @@ body {
       border: none;
       @include mediaQuery($breakPoint){
         @include positioning(absolute, 0, inherit, inherit, 0, 1);
-        // position: absolute;
         height: 100%;
-        // left: 0; top: 0;
       }
     } // end iframe
   } // end .aspect-ratio
@@ -221,7 +190,6 @@ body {
 }
 
 .video-list-item {
-  // background: orange;
   margin: .5em 0;
   transition: all .3s;
   &:hover {
@@ -230,7 +198,6 @@ body {
   }
 
   .video-title {
-    // background: green;
     width: 70%;
     font-size: .8em;
     padding-left: 1em;
@@ -242,14 +209,13 @@ body {
   .video-title {
     float: left;
   } // end .video-title
-}
+} // end .video-list-item
 
 .videos,
 .search-bar,
 .video-description {
   box-shadow: 0px 1px 7px rgba(0,0,0,0.2);
 }
-
 
 .clearfix::after {
   content: " ";

@@ -1,0 +1,25 @@
+// mixins
+@mixin mediaQuery ($pixels) {
+  @media screen and (min-width: $pixels) {
+    @content;
+  }
+}
+
+@mixin positioning($position, $top, $right, $bottom, $left, $z-index) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
+}
+
+@mixin flexBox($justify-content, $align-items) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin horizontalCenter($vertical) {
+  margin: $vertical auto;
+}
