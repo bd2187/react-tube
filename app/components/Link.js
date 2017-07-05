@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Logo from '../utils/img/youtube.png';
 
 function Link(props) {
-  console.log(props);
   return (
     <a
       href="#"
