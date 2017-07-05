@@ -34,7 +34,11 @@ class App extends React.Component {
     var videosArr = this.state.videosArr;
     return (
       <div className="container">
-        <SearchBar onSubmit={this.handleSearch}/>
+        <SearchBar
+          onSubmit={this.handleSearch}
+          onLoad={
+            document.querySelector('input') && document.querySelector('input').focus()
+          }/>
         { !videosArr
           ? <div className="loader"></div>
           : <div className="main-box clearfix">
