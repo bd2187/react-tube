@@ -58,6 +58,9 @@ body {
     width: 12%;
     max-width: 65.39px;
     display: block;
+    &:focus {
+      outline: none;
+    }
     .logo {
       width: 100%;
       margin: 0;

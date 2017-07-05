@@ -68,6 +68,10 @@ body {
   display: block;
 }
 
+.search-bar .logo-link:focus {
+  outline: none;
+}
+
 .search-bar .logo-link .logo {
   width: 100%;
   margin: 0;
