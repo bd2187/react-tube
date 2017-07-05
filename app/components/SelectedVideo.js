@@ -2,6 +2,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import date from '../utils/date';
+
 
 function SelectedVideo(props) {
   var selectedVideo = props.selectedVideo;
@@ -15,7 +17,7 @@ function SelectedVideo(props) {
       </div>
       <div className="video-description">
         <h3>{selectedVideo.snippet.title}</h3>
-        <p className="publish-date">Published on {selectedVideo.snippet.publishedAt}</p>
+        <p className="publish-date">Published on {date(selectedVideo.snippet.publishedAt)}</p>
         <p className="description">{selectedVideo.snippet.description}</p>
       </div>
     </div>
