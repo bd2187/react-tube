@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Logo from '../utils/img/youtube.png';
 
 function Link(props) {
+  console.log(props);
   return (
     <a
       href="#"
@@ -10,6 +11,7 @@ function Link(props) {
       onClick={function(e){
         e.preventDefault();
         props.resetState('React JS');
+        props.clearInputField();
       }}
     >
       <img className="logo"
@@ -19,7 +21,8 @@ function Link(props) {
 }
 
 Link.propTypes = {
-  resetState: PropTypes.func.isRequired
+  resetState: PropTypes.func.isRequired,
+  clearInputField: PropTypes.func.isRequired
 }
 
 export default Link;

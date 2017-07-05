@@ -12,6 +12,7 @@ class SearchBar extends React.Component {
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearInputField = this.clearInputField.bind(this);
   }
   handleInput(event) {
     var searchValue = event.target.value;
@@ -23,11 +24,14 @@ class SearchBar extends React.Component {
     event.preventDefault();
     this.props.onSubmit(this.state.searchValue);
   }
+  clearInputField() {
+    this.setState({searchValue: ""});
+  }
   render() {
     var searchValue = this.state.searchValue;
     return (
       <div className="search-bar clearfix">
-        <Link resetState={this.props.onSubmit}/>
+        <Link resetState={this.props.onSubmit} clearInputField={this.clearInputField}/>
         <div className="form-box">
           <form onSubmit={this.handleSubmit}>
             <input
