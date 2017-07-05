@@ -8,6 +8,6 @@ import MainCss from './styles/css/main.css';
 
 
 ReactDOM.render(
-  <App />,
+  <App/>,
   document.getElementById('app')
 );
