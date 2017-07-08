@@ -27,6 +27,9 @@ class SearchBar extends React.Component {
   clearInputField() {
     this.setState({searchValue: ""});
   }
+  componentDidMount() {
+    this.textInput.focus();
+  }
   render() {
     var searchValue = this.state.searchValue;
     return (
@@ -39,6 +42,7 @@ class SearchBar extends React.Component {
               value={searchValue}
               placeholder="Search"
               autoComplete="off"
+              ref={(input) => {this.textInput = input;}}
               onChange={this.handleInput}/>
             <button
               disabled={!searchValue}>
