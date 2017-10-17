@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import React from 'react';
 import SearchBar from './SearchBar';
@@ -13,18 +13,22 @@ class App extends React.Component {
       searchTerm: 'React JS',
       videosArr: null,
       selectedVideo: null
-    }
+    };
     this.handleSearch = this.handleSearch.bind(this);
     this.changeSelectedVideo = this.changeSelectedVideo.bind(this);
   }
   handleSearch(searchTerm) {
-    YoutubeSearch(searchTerm, function(videosArr = []) {
-      this.setState({videosArr, selectedVideo: videosArr[0]});
-    }.bind(this));
+    YoutubeSearch(searchTerm, (videosArr = []) => {
+      this.setState({ videosArr, selectedVideo: videosArr[0] });
+    });
   }
   changeSelectedVideo(video) {
-    this.setState(function(){
-      return {selectedVideo: video}
+    YoutubeSearch(video.snippet.title, (videosArr = []) => {
+      this.setState({ videosArr });
+    });
+
+    this.setState(function() {
+      return { selectedVideo: video };
     });
   }
   componentDidMount() {
@@ -34,18 +38,16 @@ class App extends React.Component {
     var videosArr = this.state.videosArr;
     return (
       <div className="container">
-        <SearchBar
-          onSubmit={this.handleSearch}/>
-        { !videosArr
-          ? <div className="loader"></div>
+        <SearchBar onSubmit={this.handleSearch} />
+        {!videosArr
+          ? <div className="loader" />
           : <div className="main-box clearfix">
-              <SelectedVideo
-                selectedVideo={this.state.selectedVideo}/>
+              <SelectedVideo selectedVideo={this.state.selectedVideo} />
               <Videos
                 videosArr={videosArr}
-                changeSelectedVideo={this.changeSelectedVideo}/>
-          </div>
-        }
+                changeSelectedVideo={this.changeSelectedVideo}
+              />
+            </div>}
       </div>
     );
   }
