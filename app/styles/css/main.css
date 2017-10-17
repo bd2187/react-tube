@@ -3,7 +3,9 @@
   box-sizing: border-box;
 }
 
-h2, h3, p {
+h2,
+h3,
+p {
   margin: 0;
 }
 
@@ -263,7 +265,7 @@ body {
 
 .video-list-item:hover {
   cursor: pointer;
-  color: #4460F7;
+  color: #4460f7;
 }
 
 .video-list-item .video-title {
