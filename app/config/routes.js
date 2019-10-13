@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import VideoContainer from "../containers/VideoContainer";
+import NavigationContainer from "../containers/NavigationContainer";
 
 // import SearchBar from "../components/SearchBar";
 // import SelectedVideo from "../components/SelectedVideo";
@@ -60,6 +61,7 @@ import VideoContainer from "../containers/VideoContainer";
 
 const routes = (
     <Router>
+        <NavigationContainer />
         <Switch>
             <Route path="/" component={VideoContainer} />
         </Switch>
