@@ -21,7 +21,7 @@ const initialState = {
 function searchedVideos(state = initialState, action) {
     switch (action.type) {
         case LOADING_VIDEO_QUERY:
-            return { ...state, loadingQuery: true };
+            return { ...state, loadingVideoQuery: true };
 
         case UPDATE_VIDEOS:
             return {
@@ -33,7 +33,7 @@ function searchedVideos(state = initialState, action) {
             };
 
         case ERROR_FETCHING_VIDEOS:
-            return { ...state, error: true, loadingQuery: false };
+            return { ...state, error: true, loadingVideoQuery: false };
 
         default:
             return state;
