@@ -15,16 +15,29 @@ const Navigation = function Navigation({ updateVideos, user }) {
     const [searchBarOpened, setSearchBarOpened] = useState(false);
     const [navMenuOpened, setNavMenuOpened] = useState(false);
 
+    /**
+     * Submit query to redux by calling
+     * updateVideos(userQuery)
+     */
     const onSubmit = function onSubmit(evt) {
         evt.preventDefault();
         updateVideos(userQuery);
     };
 
+    /**
+     * Called per keystroke
+     * to update text input's value
+     */
     const updateValue = function updateValue(evt) {
         var value = evt.target.value;
         setQuery(value);
     };
 
+    /**
+     * Toggles opening/closing of search bar. (This is pertinent only for
+     * mobile/tablet devices). Utilize setTimeout to ensure the call happens
+     * at the end of the callstack to allow time for setSearchBarOpened() to complete.
+     */
     const toggleSearchBar = function toggleSearchBar() {
         setSearchBarOpened(!searchBarOpened);
         var searchInput = document.getElementsByClassName(
@@ -42,6 +55,9 @@ const Navigation = function Navigation({ updateVideos, user }) {
         }
     };
 
+    /**
+     * Toggles navigation menu
+     */
     const toggleNavMenu = function toggleNavMenu() {
         setNavMenuOpened(!navMenuOpened);
     };
