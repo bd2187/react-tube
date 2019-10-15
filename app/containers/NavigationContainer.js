@@ -4,8 +4,15 @@ import { connect } from "react-redux";
 import Navigation from "../components/Navigation/Navigation";
 import updateVideos from "../actions/searchedVideosActions";
 
+/**
+ * Renders the Navigation component while passing it
+ * the updateVideos action and the user object as props.
+ * @param Object props
+ * @return Object Navigation component
+ */
 const NavigationContainer = function NavigationContainer(props) {
-    return <Navigation updateVideos={props.updateVideos} user={props.user} />;
+    var { updateVideos, user } = props;
+    return <Navigation updateVideos={updateVideos} user={user} />;
 };
 
 const mapStateToProps = function mapStateToProps(store) {
