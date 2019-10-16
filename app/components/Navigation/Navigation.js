@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Link from "../Link";
+import { Link } from "react-router-dom";
+// import Link from "../Link";
 import styles from "./Navigation.module.css";
 import SearchBar from "./SearchBar";
 import NavigationMenu from "./NavigationMenu";
+import Logo from "../../utils/img/youtube.png";
 
 /**
  * Renders the Navigation header.
@@ -69,8 +71,8 @@ const Navigation = function Navigation({ updateVideos, user }) {
             }`}
         >
             {/* <Link /> */}
-            <div className={`${styles["header_logo"]}`}>
-                <h1>logo</h1>
+            <div className={`${styles["header__logo"]}`}>
+                <img src={Logo} />
             </div>
 
             <SearchBar
@@ -80,13 +82,45 @@ const Navigation = function Navigation({ updateVideos, user }) {
                 toggleSearchBar={toggleSearchBar}
             />
 
-            <div className={`${styles["header_icons-container"]}`}>
+            <div className={`${styles["user-icons"]}`}>
                 <i
                     onClick={toggleSearchBar}
-                    className="fa fa-search"
+                    className={`
+                        ${styles["user-icons__icon"]}
+                        ${styles["user-icons__item"]}
+                        ${styles["search-icon"]}                        
+                        fa fa-search
+                    `}
                     aria-hidden="true"
                 ></i>
-                <i onClick={toggleNavMenu} className="fa fa-user-circle"></i>
+
+                {user.id ? (
+                    <i
+                        onClick={toggleNavMenu}
+                        className={`
+                        ${styles["user-icons__icon"]}
+                        ${styles["user-icons__item"]}
+                        ${styles["user-icon"]}
+                        fa fa-user-circle`}
+                    ></i>
+                ) : (
+                    <Link to="/signin">
+                        <div
+                            className={`
+                            ${styles["user-icons__sign-in"]}
+                            ${styles["user-icons__item"]}
+                        `}
+                        >
+                            <i
+                                className={`
+                        ${styles["user-icons__icon"]}
+                        ${styles["user-icon"]}                        
+                        fa fa-user-circle`}
+                            ></i>
+                            <p>SIGN IN</p>
+                        </div>
+                    </Link>
+                )}
             </div>
 
             {navMenuOpened ? (
