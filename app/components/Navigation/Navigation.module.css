@@ -1,11 +1,20 @@
 .header {
-    background-color: blue;
+    background-color: #262626;
     width: 100%;
+    padding: 3px 18px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     position: relative;
+}
+
+.header__logo {
+    width: 55px;
+}
+
+.header__logo img {
+    width: 100%;
 }
 
 .header .search-form-container {
@@ -16,23 +25,110 @@
     display: flex;
     align-items: center;
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: purple;
+    background: #262626;
 }
 
-.header_icons-container {
-    background: red;
+.user-icons,
+.user-icons__sign-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: blue; */
+}
+
+.user-icons__sign-in {
+    border: 1px solid #c8524f;
+    padding: 5px;
+}
+
+.user-icons__sign-in i,
+.user-icons__sign-in p {
+    margin: 5px;
+    color: #c8524f;
+}
+
+.user-icons__sign-in p {
+    font-size: 14px;
+}
+
+.user-icons:hover,
+.search-form-container__back-btn {
+    cursor: pointer;
+}
+
+.user-icons__item {
+    margin: 0px 13px;
+}
+.user-icons__icon {
+    font-size: 22px;
 }
 
 .header--open-nav-menu {
 }
 
 .search-form-container__form {
-    width: 80%;
-    background: red;
+    width: 100%;
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-form-container__back-btn {
+    font-size: 22px;
+    padding: 7px;
 }
 
 .search-form-container__text-input {
-    width: 85%;
+    width: 75%;
+    background: #0d0d0d;
+    border-radius: 0.2em;
+}
+
+.search-form-container__text-input:focus {
+    outline: none;
+    border: 0.5px solid #2d78ba;
+}
+.search-form-container__search-btn {
+    width: 15%;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #595959;
+}
+
+.search-form-container__text-input,
+.search-form-container__search-btn {
+    padding: 0.5em;
+    border: none;
+}
+
+.user-icons__icon.user-icon {
+    color: #c8524f;
+}
+
+.search-form-container__text-input,
+.user-icons__icon.search-icon,
+.search-form-container__back-btn {
+    color: #fff;
+}
+
+.navigation-menu-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4;
+}
+
+.navigation-menu {
+    background: blue;
+    position: fixed;
+    right: 60px;
+    top: 0;
+    height: 100px;
+    z-index: 5;
 }
