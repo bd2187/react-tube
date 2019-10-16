@@ -8,7 +8,7 @@ import {
 
 function updateVideos(query) {
     return function(dispatch) {
-        dispatch({ type: LOADING_VIDEO_QUERY });
+        dispatch({ type: LOADING_VIDEO_QUERY, query });
 
         return SearchVideos({ key: API_KEY, term: query }, function(data) {
             try {
