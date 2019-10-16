@@ -7,13 +7,17 @@ import styles from "./Navigation.module.css";
  * user icon.
  */
 const NavigationMenu = function NavigationMenu({ toggleNavMenu, user }) {
+    const { email, id, username } = user;
     return (
-        <div
-            onClick={toggleNavMenu}
-            style={{ position: "fixed", top: 0, backgroundColor: "red" }}
-        >
-            <h1>test</h1>
-        </div>
+        <>
+            <div
+                onClick={toggleNavMenu}
+                className={styles["navigation-menu-wrap"]}
+            ></div>
+            <div className={styles["navigation-menu"]}>
+                <p>user info</p>
+            </div>
+        </>
     );
 };
 
