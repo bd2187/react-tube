@@ -59,11 +59,16 @@ import NavigationContainer from "../containers/NavigationContainer";
 //     }
 // }
 
+const SignIn = function() {
+    return <h1>SignIn</h1>;
+};
+
 const routes = (
     <Router>
         <NavigationContainer />
         <Switch>
-            <Route path="/" component={VideoContainer} />
+            <Route exact path="/" component={VideoContainer} />
+            <Route exact path="/signin" component={SignIn} />
         </Switch>
     </Router>
 );
