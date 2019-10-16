@@ -14,20 +14,30 @@ const SearchBar = function SearchBar({
 }) {
     return (
         <div className={`${styles["search-form-container"]}`}>
-            <i onClick={toggleSearchBar} className="fa fa-arrow-left"></i>
             <form
                 className={`${styles["search-form-container__form"]}`}
                 onSubmit={onSubmit}
             >
+                <i
+                    onClick={toggleSearchBar}
+                    className={`
+                        ${styles["search-form-container__back-btn"]}
+                        fa fa-arrow-left
+                    `}
+                ></i>
                 <input
-                    className={`${styles["search-form-container__text-input"]}`}
+                    className={styles["search-form-container__text-input"]}
                     type="text"
                     value={userQuery}
                     placeholder="Search"
                     autoComplete="off"
                     onChange={updateValue}
+                    // onBlur={toggleSearchBar}
                 />
-                <button disabled={!userQuery}>
+                <button
+                    disabled={!userQuery}
+                    className={styles["search-form-container__search-btn"]}
+                >
                     <i className="fa fa-search" aria-hidden="true"></i>
                 </button>
             </form>
