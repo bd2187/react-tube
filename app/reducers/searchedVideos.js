@@ -21,12 +21,11 @@ const initialState = {
 function searchedVideos(state = initialState, action) {
     switch (action.type) {
         case LOADING_VIDEO_QUERY:
-            return { ...state, loadingVideoQuery: true };
+            return { ...state, query: action.query, loadingVideoQuery: true };
 
         case UPDATE_VIDEOS:
             return {
                 ...state,
-                query: action.query,
                 videos: action.videos,
                 error: false,
                 loadingVideoQuery: false
