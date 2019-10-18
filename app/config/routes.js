@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import VideoContainer from "../containers/VideoContainer";
 import NavigationContainer from "../containers/NavigationContainer";
+import SignInContainer from "../containers/SignInContainer";
 
 // import SearchBar from "../components/SearchBar";
 // import SelectedVideo from "../components/SelectedVideo";
@@ -59,16 +60,12 @@ import NavigationContainer from "../containers/NavigationContainer";
 //     }
 // }
 
-const SignIn = function() {
-    return <h1>SignIn</h1>;
-};
-
 const routes = (
     <Router>
         <NavigationContainer />
         <Switch>
             <Route exact path="/" component={VideoContainer} />
-            <Route exact path="/signin" component={SignIn} />
+            <Route exact path="/signin" component={SignInContainer} />
         </Switch>
     </Router>
 );
