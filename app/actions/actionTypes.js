@@ -1,5 +1,17 @@
+// *** Searched Videos Actions ***
 export const LOADING_VIDEO_QUERY = "LOADING_VIDEO_QUERY";
 
 export const UPDATE_VIDEOS = "UPDATE_VIDEOS";
 
 export const ERROR_FETCHING_VIDEOS = "ERROR_FETCHING_VIDEOS";
+
+// *** User Authentication Actions ***
+export const USER_SIGNED_IN = "USER_SIGNED_IN";
+
+export const USER_SIGNED_OUT = "USER_SIGNED_OUT";
+
+export const USER_SIGNED_UP = "USER_SIGNED_UP";
+
+export const USER_AUTHENTICATION_LOADING = "USER_AUTHENTICATION_LOADING";
+
+export const USER_AUTHENTICATION_ERROR = "USER_AUTHENTICATION_ERROR";
