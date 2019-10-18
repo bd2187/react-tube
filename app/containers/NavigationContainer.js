@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import Navigation from "../components/Navigation/Navigation";
 import updateVideos from "../actions/searchedVideosActions";
 
@@ -11,8 +12,13 @@ import updateVideos from "../actions/searchedVideosActions";
  * @return Object Navigation component
  */
 const NavigationContainer = function NavigationContainer(props) {
-    var { updateVideos, user } = props;
-    return <Navigation updateVideos={updateVideos} user={user} />;
+    var { updateVideos, user, location } = props;
+
+    if (location.pathname === "/signin" || location.pathname === "/signup") {
+        return null;
+    } else {
+        return <Navigation updateVideos={updateVideos} user={user} />;
+    }
 };
 
 const mapStateToProps = function mapStateToProps(store) {
@@ -46,4 +52,4 @@ NavigationContainer.propTypes = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(NavigationContainer);
+)(withRouter(NavigationContainer));
