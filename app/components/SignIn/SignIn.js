@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../utils/img/youtube.png";
+import styles from "./SignIn.module.css";
 
 const SignIn = function SignIn({ signInUser }) {
     const [email, setEmail] = useState("");
@@ -11,13 +12,9 @@ const SignIn = function SignIn({ signInUser }) {
         const type = targetEl.getAttribute("data-type");
         const value = targetEl.value;
 
-        if (type === "email") {
-            setEmail(value);
-        }
+        if (type === "email") setEmail(value);
 
-        if (type === "password") {
-            setPassword(value);
-        }
+        if (type === "password") setPassword(value);
     };
 
     const submitForm = function submitForm(evt) {
@@ -26,13 +23,13 @@ const SignIn = function SignIn({ signInUser }) {
     };
 
     return (
-        <div>
-            <div>
-                <img src={Logo} />
-                <h1>Sign in</h1>
-                <h3>to continue</h3>
+        <div className={styles["sign-in__container"]}>
+            <div className={styles["sign-in-header"]}>
+                <img className={styles["sign-in-header__logo"]} src={Logo} />
+                <h1 className={`${styles["sign-in__text"]}`}>Sign in</h1>
+                <h3 className={styles["sign-in__text"]}>to continue</h3>
             </div>
-            <form onSubmit={submitForm}>
+            <form onSubmit={submitForm} className={styles["sign-in-form"]}>
                 <input
                     type="text"
                     data-type="email"
@@ -40,6 +37,7 @@ const SignIn = function SignIn({ signInUser }) {
                     onChange={updateInputField}
                     placeholder="Enter Email"
                     required
+                    className={styles["sign-in-form__input-field"]}
                 />
 
                 <input
@@ -49,10 +47,20 @@ const SignIn = function SignIn({ signInUser }) {
                     onChange={updateInputField}
                     placeholder="Enter Password"
                     required
+                    className={styles["sign-in-form__input-field"]}
                 />
 
-                <Link to="/create-account">Create account</Link>
-                <input type="submit" value="Next" />
+                <Link
+                    to="/create-account"
+                    className={styles["sign-in-form__create-acount-link"]}
+                >
+                    Create account
+                </Link>
+                <input
+                    className={styles["sign-in-form__submit-btn"]}
+                    type="submit"
+                    value="Next"
+                />
             </form>
         </div>
     );
