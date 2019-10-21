@@ -1,0 +1,84 @@
+.sign-in__container {
+    /* background: navy; */
+    min-height: 100vh;
+}
+
+/*****  Sign In Header *****/
+.sign-in-header {
+    /* background: purple; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 0;
+}
+
+.sign-in-header__logo {
+    width: 50px;
+    display: block;
+}
+
+.sign-in__text {
+    margin: 5px 0;
+}
+
+h1.sign-in__text {
+    font-size: 1.8em;
+}
+
+h3.sign-in__text {
+    font-size: 1.2em;
+}
+
+/*****  Sign In Form *****/
+.sign-in-form {
+    overflow: auto;
+}
+
+.sign-in-form__input-field,
+.sign-in-form__footer {
+    width: 83%;
+}
+
+.sign-in-form__input-field {
+    display: block;
+    margin: 0px auto 20px;
+
+    padding: 12px 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+}
+
+.sign-in-form__input-field::placeholder {
+    color: #828282;
+}
+
+.sign-in-form__input-field:focus {
+    outline: none;
+    border: 2px solid #2d78ba;
+}
+
+.sign-in-form__footer {
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.sign-in-form__create-acount-link {
+    color: #2d78ba;
+}
+
+.sign-in-form__submit-btn {
+    color: #fff;
+    background-color: #2d78ba;
+    padding: 10px 28px;
+    border-radius: 5px;
+    border: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.sign-in-form__submit-btn:hover {
+    background-color: #358edb;
+}
