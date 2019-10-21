@@ -35,7 +35,7 @@ const SignIn = function SignIn({ signInUser }) {
                     data-type="email"
                     value={email}
                     onChange={updateInputField}
-                    placeholder="Enter Email"
+                    placeholder="Email"
                     required
                     className={styles["sign-in-form__input-field"]}
                 />
@@ -45,22 +45,24 @@ const SignIn = function SignIn({ signInUser }) {
                     data-type="password"
                     value={password}
                     onChange={updateInputField}
-                    placeholder="Enter Password"
+                    placeholder="Password"
                     required
                     className={styles["sign-in-form__input-field"]}
                 />
 
-                <Link
-                    to="/create-account"
-                    className={styles["sign-in-form__create-acount-link"]}
-                >
-                    Create account
-                </Link>
-                <input
-                    className={styles["sign-in-form__submit-btn"]}
-                    type="submit"
-                    value="Next"
-                />
+                <div className={styles["sign-in-form__footer"]}>
+                    <Link
+                        to="/create-account"
+                        className={styles["sign-in-form__create-acount-link"]}
+                    >
+                        Create account
+                    </Link>
+                    <input
+                        className={styles["sign-in-form__submit-btn"]}
+                        type="submit"
+                        value="Next"
+                    />
+                </div>
             </form>
         </div>
     );
