@@ -24,12 +24,15 @@ const SignIn = function SignIn({ signInUser }) {
 
     return (
         <div className={styles["sign-in__container"]}>
-            <div className={styles["sign-in-header"]}>
-                <img className={styles["sign-in-header__logo"]} src={Logo} />
-                <h1 className={`${styles["sign-in__text"]}`}>Sign in</h1>
-                <h3 className={styles["sign-in__text"]}>to continue</h3>
-            </div>
             <form onSubmit={submitForm} className={styles["sign-in-form"]}>
+                <div className={styles["sign-in-header"]}>
+                    <img
+                        className={styles["sign-in-header__logo"]}
+                        src={Logo}
+                    />
+                    <h1 className={`${styles["sign-in__text"]}`}>Sign in</h1>
+                    <h3 className={styles["sign-in__text"]}>to continue</h3>
+                </div>
                 <input
                     type="text"
                     data-type="email"
