@@ -55,7 +55,7 @@ h3.sign-in__text {
 
 .sign-in-form__input-field:focus {
     outline: none;
-    border: 2px solid #2d78ba;
+    border: 1px solid #2d78ba;
 }
 
 .sign-in-form__footer {
@@ -81,4 +81,18 @@ h3.sign-in__text {
 
 .sign-in-form__submit-btn:hover {
     background-color: #358edb;
+}
+
+@media only screen and (min-width: 599px) {
+    .sign-in__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .sign-in-form {
+        width: 450px;
+        padding: 10px 15px 100px;
+        border: 1px solid #c4c4c4;
+        border-radius: 10px;
+    }
 }
