@@ -5,12 +5,34 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const SignInContainer = function SignInContainer({ userID, signInUser }) {
-    return userID ? <Redirect to="/" /> : <SignIn signInUser={signInUser} />;
+const SignInContainer = function SignInContainer({
+    userID,
+    signInUser,
+    authError,
+    errorMessage,
+    loadingAuth
+}) {
+    return userID ? (
+        <Redirect to="/" />
+    ) : (
+        <SignIn
+            signInUser={signInUser}
+            authError={authError}
+            errorMessage={errorMessage}
+            loadingAuth={loadingAuth}
+        />
+    );
 };
 
 const mapStateToProps = function(state) {
-    return { userID: state.user.id };
+    const { id: userID, authError, errorMessage, loadingAuth } = state.user;
+
+    return {
+        userID,
+        authError,
+        errorMessage,
+        loadingAuth
+    };
 };
 
 const mapDispatchToProps = function(dispatch) {
@@ -23,7 +45,10 @@ const mapDispatchToProps = function(dispatch) {
 
 SignInContainer.propTypes = {
     userID: PropTypes.string.isRequired,
-    signInUser: PropTypes.func.isRequired
+    signInUser: PropTypes.func.isRequired,
+    authError: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string.isRequired,
+    loadingAuth: PropTypes.bool.isRequired
 };
 
 export default connect(
