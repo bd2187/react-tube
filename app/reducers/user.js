@@ -13,6 +13,7 @@ const initialState = {
     favorites: [],
     token: "",
     authError: false,
+    errorMessage: "",
     loadingAuth: false
 };
 
@@ -24,6 +25,7 @@ function user(state = initialState, action) {
             return {
                 ...state,
                 authError: false,
+                errorMessage: "",
                 loadingAuth: false,
                 id: user.id,
                 username: user.username,
@@ -35,7 +37,6 @@ function user(state = initialState, action) {
         case USER_AUTHENTICATION_LOADING:
             return {
                 ...state,
-                authError: false,
                 loadingAuth: true
             };
 
@@ -43,6 +44,7 @@ function user(state = initialState, action) {
             return {
                 ...state,
                 authError: true,
+                errorMessage: action.errorMessage,
                 loadingAuth: false
             };
         default:
