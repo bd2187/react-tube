@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import Logo from "../../utils/img/youtube.png";
 import styles from "./SignIn.module.css";
 
-const SignIn = function SignIn({ signInUser }) {
+const SignIn = function SignIn({
+    signInUser,
+    authError,
+    errorMessage,
+    loadingAuth
+}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -24,7 +30,17 @@ const SignIn = function SignIn({ signInUser }) {
 
     return (
         <div className={styles["sign-in__container"]}>
-            <form onSubmit={submitForm} className={styles["sign-in-form"]}>
+            <form
+                onSubmit={submitForm}
+                className={`
+                    ${styles["sign-in-form"]}
+                    ${loadingAuth ? styles["sign-in-form--loading"] : ""}
+                `}
+            >
+                <div className={styles["loading-container"]}>
+                    <div className={styles["loading-bar"]}></div>
+                </div>
+
                 <div className={styles["sign-in-header"]}>
                     <img
                         className={styles["sign-in-header__logo"]}
@@ -53,6 +69,19 @@ const SignIn = function SignIn({ signInUser }) {
                     className={styles["sign-in-form__input-field"]}
                 />
 
+                <p
+                    className={`
+                        ${styles["sign-in-form__error-message"]}
+                        ${
+                            authError
+                                ? styles["sign-in-form__error-message--display"]
+                                : ""
+                        }
+                    `}
+                >
+                    {errorMessage ? errorMessage : "Error with authentication."}
+                </p>
+
                 <div className={styles["sign-in-form__footer"]}>
                     <Link
                         to="/create-account"
@@ -69,6 +98,12 @@ const SignIn = function SignIn({ signInUser }) {
             </form>
         </div>
     );
+};
+
+SignIn.propTypes = {
+    signInUser: PropTypes.func.isRequired,
+    authError: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string.isRequired
 };
 
 export default SignIn;
