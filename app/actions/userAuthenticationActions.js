@@ -44,19 +44,34 @@ export function signInUser({ email, password }) {
     return function(dispatch) {
         dispatch({ type: USER_AUTHENTICATION_LOADING });
 
-        return axios
-            .post("http://localhost:5000/user/signin", {
-                email,
-                password
-            })
-            .then(function(res) {
-                const user = decryptToken();
-
-                dispatch({ type: USER_SIGNED_IN, user });
-            })
-            .catch(function(err) {
-                dispatch({ type: USER_AUTHENTICATION_ERROR });
-            });
+        return setTimeout(() => {
+            return axios
+                .post("http://localhost:5000/user/signin", {
+                    email,
+                    password
+                })
+                .then(function(res) {
+                    const { success, data } = res.data;
+                    if (success) {
+                        // const user = decryptToken();
+                        // dispatch({ type: USER_SIGNED_IN, user });
+                    } else {
+                        dispatch({
+                            type: USER_AUTHENTICATION_ERROR,
+                            errorMessage:
+                                data.message ||
+                                "There was an error with verifying your email. Please try again."
+                        });
+                    }
+                })
+                .catch(function(err) {
+                    dispatch({
+                        type: USER_AUTHENTICATION_ERROR,
+                        errorMessage:
+                            "There was an error with verifying your email. Please try again."
+                    });
+                });
+        }, 800);
     };
 }
 
