@@ -41,7 +41,7 @@ h3.sign-in__text {
 
 .sign-in-form--loading .sign-in-header,
 .sign-in-form--loading .sign-in-form__input-field,
-.sign-in-form--loading .sign-in-form__error-message,
+.sign-in-form--loading .sign-in-form__error-message--display,
 .sign-in-form--loading .sign-in-form__footer {
     opacity: 0.5;
 }
