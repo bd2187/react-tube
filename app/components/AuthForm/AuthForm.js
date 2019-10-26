@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Logo from "../../utils/img/youtube.png";
@@ -8,11 +8,13 @@ const AuthInputField = function AuthInputField({
     placeholder,
     value,
     onChange,
-    type
+    type,
+    inputKey
 }) {
     return (
         <input
-            data-type={placeholder}
+            className={styles["auth-form__input-field"]}
+            data-type={inputKey}
             placeholder={placeholder}
             value={value}
             onChange={onChange}
@@ -21,6 +23,11 @@ const AuthInputField = function AuthInputField({
     );
 };
 
+/**
+ *
+ * Renders form for authorization (i.e sign-in / sign-up)
+ *
+ */
 const AuthForm = function AuthForm({
     inputFields,
     onChange,
@@ -59,11 +66,13 @@ const AuthForm = function AuthForm({
                     </div>
                 ) : null}
 
-                {inputFields.map(function({ type, placeholder, value }) {
+                {Object.keys(inputFields).map(function(inputKey) {
+                    const { type, placeholder, value } = inputFields[inputKey];
+
                     return (
                         <AuthInputField
-                            key={placeholder}
-                            data-type={placeholder}
+                            key={inputKey}
+                            inputKey={inputKey}
                             placeholder={placeholder}
                             value={value}
                             onChange={onChange}
@@ -86,12 +95,15 @@ const AuthForm = function AuthForm({
                 </p>
 
                 <div className={styles["auth-form__footer"]}>
-                    <Link
-                        to={link.path}
-                        className={styles["auth-form__create-acount-link"]}
-                    >
-                        {link.value}
-                    </Link>
+                    {link ? (
+                        <Link
+                            to={link.path}
+                            className={styles["auth-form__create-acount-link"]}
+                        >
+                            {link.value}
+                        </Link>
+                    ) : null}
+
                     <input
                         className={styles["auth-form__submit-btn"]}
                         type="submit"
@@ -101,13 +113,16 @@ const AuthForm = function AuthForm({
             </form>
         </div>
     );
-    // iterate through input fields and render each field to virtual dom
-    // contain error message
-    // have onsubmit
 };
 
-// AuthForm.propTypes = {
-//     inputFields: PropTypes.array.isRequired
-// };
+AuthForm.propTypes = {
+    inputFields: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    authError: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string,
+    loadingAuth: PropTypes.bool.isRequired,
+    link: PropTypes.object,
+    headerText: PropTypes.string
+};
 
 export default AuthForm;
