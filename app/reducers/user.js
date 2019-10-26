@@ -37,7 +37,8 @@ function user(state = initialState, action) {
         case USER_AUTHENTICATION_LOADING:
             return {
                 ...state,
-                loadingAuth: true
+                loadingAuth: true,
+                authError: false
             };
 
         case USER_AUTHENTICATION_ERROR:
