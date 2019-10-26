@@ -1,0 +1,39 @@
+.auth-container {
+    min-height: 100vh;
+}
+
+.auth-form {
+}
+
+.auth-form--loading {
+}
+
+.loading-container {
+}
+
+.loading-bar {
+}
+
+.auth-header {
+}
+
+.auth-header__logo {
+}
+
+.auth-header__text {
+}
+
+.auth-form__error-message {
+}
+
+.auth-form__error-message--display {
+}
+
+.auth-form__footer {
+}
+
+.auth-form__create-acount-link {
+}
+
+.auth-form__submit-btn {
+}
