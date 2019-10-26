@@ -1,10 +1,15 @@
-import React from "react";
-import SignIn from "../components/SignIn/SignIn";
+import React, { useState } from "react";
+import AuthForm from "../components/AuthForm/AuthForm";
 import { signInUser } from "../actions/userAuthenticationActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
+/**
+ *
+ * Renders the AuthForm component with sign-in input fields
+ *
+ */
 const SignInContainer = function SignInContainer({
     userID,
     signInUser,
@@ -12,14 +17,56 @@ const SignInContainer = function SignInContainer({
     errorMessage,
     loadingAuth
 }) {
+    const initialInputFields = {
+        email: {
+            type: "text",
+            placeholder: "Email",
+            value: ""
+        },
+        password: {
+            type: "password",
+            placeholder: "Password",
+            value: ""
+        }
+    };
+
+    const [inputFields, setInputFields] = useState(initialInputFields);
+
+    const onChange = function onChange(evt) {
+        const targetEl = evt.target;
+        const type = targetEl.getAttribute("data-type");
+
+        const updatedValue = targetEl.value;
+
+        const updatedInputFields = { ...inputFields };
+
+        updatedInputFields[type].value = updatedValue;
+
+        setInputFields(updatedInputFields);
+    };
+
+    const onSubmit = function onSubmit(evt) {
+        evt.preventDefault();
+        signInUser(inputFields.email.value, inputFields.password.value);
+    };
+
+    const link = {
+        value: "Create Account",
+        path: "/signup"
+    };
+
     return userID ? (
         <Redirect to="/" />
     ) : (
-        <SignIn
-            signInUser={signInUser}
+        <AuthForm
+            inputFields={inputFields}
+            onChange={onChange}
+            onSubmit={onSubmit}
             authError={authError}
             errorMessage={errorMessage}
             loadingAuth={loadingAuth}
+            link={link}
+            headerText={"Sign in"}
         />
     );
 };
