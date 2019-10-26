@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import VideoContainer from "../containers/VideoContainer";
 import NavigationContainer from "../containers/NavigationContainer";
 import SignInContainer from "../containers/SignInContainer";
+import SignUpContainer from "../containers/SignUpContainer";
 
 // import SearchBar from "../components/SearchBar";
 // import SelectedVideo from "../components/SelectedVideo";
@@ -66,6 +67,7 @@ const routes = (
         <Switch>
             <Route exact path="/" component={VideoContainer} />
             <Route exact path="/signin" component={SignInContainer} />
+            <Route exact path="/signup" component={SignUpContainer} />
         </Switch>
     </Router>
 );
