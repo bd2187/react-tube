@@ -105,6 +105,7 @@
     border: none;
 }
 
+.navigation-menu__user-icon,
 .user-icons__icon.user-icon {
     color: #c8524f;
 }
@@ -125,10 +126,40 @@
 }
 
 .navigation-menu {
-    background: blue;
+    background-color: #262626;
     position: fixed;
     right: 60px;
-    top: 0;
-    height: 100px;
+    top: 8px;
     z-index: 5;
+    box-shadow: 0 0.5px 0 0 #696969, -0.5px 0 0 0 #696969, 0.5px 0 0 0 #696969;
+}
+
+.navigation-menu__user-info {
+    padding: 10px 24px;
+    box-shadow: 0 0.5px 0 0 #696969;
+}
+
+.navigation-menu__user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation-menu__username,
+.navigation-menu__email {
+    margin: 5px 0;
+}
+
+.navigation-menu__user-icon {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.navigation-links__item {
+    padding: 10px 24px;
+    cursor: pointer;
+}
+
+.navigation-links__item:hover {
+    background: red;
 }
