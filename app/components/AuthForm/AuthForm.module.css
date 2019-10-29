@@ -89,6 +89,7 @@ h3.auth-header__text {
     border-radius: 5px;
     border: none;
     transition: background 0.3s ease-in-out;
+    outline: none;
 }
 
 .auth-form__submit-btn:hover {
