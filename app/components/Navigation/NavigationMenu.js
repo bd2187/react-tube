@@ -15,7 +15,38 @@ const NavigationMenu = function NavigationMenu({ toggleNavMenu, user }) {
                 className={styles["navigation-menu-wrap"]}
             ></div>
             <div className={styles["navigation-menu"]}>
-                <p>user info</p>
+                <div className={styles["navigation-menu__user-info"]}>
+                    <i
+                        className={`
+                            ${
+                                styles["navigation-menu__user-icon"]
+                            }                        
+                            fa fa-user-circle
+                        `}
+                    ></i>
+                    <div>
+                        <p className={styles["navigation-menu__username"]}>
+                            {username}
+                        </p>
+                        <p className={styles["navigation-menu__email"]}>
+                            {email}
+                        </p>
+                    </div>
+                </div>
+                <ul className={styles["navigation-links"]}>
+                    <li className={styles["navigation-links__item"]}>
+                        Your Channel
+                    </li>
+                    <li className={styles["navigation-links__item"]}>
+                        Manage your account
+                    </li>
+                    <li className={styles["navigation-links__item"]}>
+                        Dark theme: On
+                    </li>
+                    <li className={styles["navigation-links__item"]}>
+                        Sign out
+                    </li>
+                </ul>
             </div>
         </>
     );
