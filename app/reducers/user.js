@@ -3,7 +3,8 @@ import {
     USER_SIGNED_OUT,
     USER_SIGNED_UP,
     USER_AUTHENTICATION_LOADING,
-    USER_AUTHENTICATION_ERROR
+    USER_AUTHENTICATION_ERROR,
+    CLEAR_AUTH_ERRORS
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -47,6 +48,13 @@ function user(state = initialState, action) {
                 authError: true,
                 errorMessage: action.errorMessage,
                 loadingAuth: false
+            };
+
+        case CLEAR_AUTH_ERRORS:
+            return {
+                ...state,
+                authError: false,
+                errorMessage: ""
             };
         default:
             return state;
