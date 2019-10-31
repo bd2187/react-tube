@@ -1,6 +1,6 @@
 import {
-    LOADING_VIDEO_QUERY,
-    UPDATE_VIDEOS,
+    LOADED_VIDEO_QUERY,
+    UPDATED_VIDEOS,
     ERROR_FETCHING_VIDEOS
 } from "../actions/actionTypes";
 
@@ -20,10 +20,10 @@ const initialState = {
  */
 function searchedVideos(state = initialState, action) {
     switch (action.type) {
-        case LOADING_VIDEO_QUERY:
+        case LOADED_VIDEO_QUERY:
             return { ...state, query: action.query, loadingVideoQuery: true };
 
-        case UPDATE_VIDEOS:
+        case UPDATED_VIDEOS:
             return {
                 ...state,
                 videos: action.videos,
