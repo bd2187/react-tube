@@ -30,6 +30,7 @@
         "file-loader": "^0.11.2",
         "firebase-tools": "^3.9.1",
         "html-webpack-plugin": "^2.30.1",
+        "jwt-decode": "^2.2.0",
         "redux-thunk": "^2.3.0",
         "style-loader": "^0.18.2",
         "url-loader": "^0.5.9",
