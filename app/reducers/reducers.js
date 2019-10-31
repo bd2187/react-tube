@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import searchedVideos from "./searchedVideos";
 import user from "./user";
+import theme from "./theme";
 
 /*
     {
@@ -20,6 +21,6 @@ import user from "./user";
     }
 */
 
-const reducers = combineReducers({ user, searchedVideos });
+const reducers = combineReducers({ user, searchedVideos, theme });
 
 export default reducers;
