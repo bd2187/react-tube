@@ -16,7 +16,8 @@ const Navigation = function Navigation({
     updateVideos,
     toggleDarkTheme,
     darkTheme,
-    user
+    user,
+    signOutUser
 }) {
     const [userQuery, setQuery] = useState("");
     const [searchBarOpened, setSearchBarOpened] = useState(false);
@@ -128,12 +129,13 @@ const Navigation = function Navigation({
                 )}
             </div>
 
-            {navMenuOpened ? (
+            {navMenuOpened && user.id ? (
                 <NavigationMenu
                     toggleNavMenu={toggleNavMenu}
                     toggleDarkTheme={toggleDarkTheme}
                     darkTheme={darkTheme}
                     user={user}
+                    signOutUser={signOutUser}
                 />
             ) : null}
         </div>
@@ -144,6 +146,7 @@ Navigation.propTypes = {
     updateVideos: PropTypes.func.isRequired,
     toggleDarkTheme: PropTypes.func.isRequired,
     darkTheme: PropTypes.bool.isRequired,
+    signOutUser: PropTypes.func.isRequired,
     user: PropTypes.shape({
         email: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,
