@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import Navigation from "../components/Navigation/Navigation";
 import updateVideos from "../actions/searchedVideosActions";
 import { toggleDarkTheme } from "../actions/themeActions";
+import { signOutUser } from "../actions/userAuthenticationActions";
 
 /**
  * Renders the Navigation component while passing it
@@ -13,7 +14,14 @@ import { toggleDarkTheme } from "../actions/themeActions";
  * @return Object Navigation component
  */
 const NavigationContainer = function NavigationContainer(props) {
-    var { updateVideos, toggleDarkTheme, user, darkTheme, location } = props;
+    var {
+        updateVideos,
+        toggleDarkTheme,
+        user,
+        darkTheme,
+        signOutUser,
+        location
+    } = props;
 
     if (location.pathname === "/signin" || location.pathname === "/signup") {
         return null;
@@ -24,6 +32,7 @@ const NavigationContainer = function NavigationContainer(props) {
                 toggleDarkTheme={toggleDarkTheme}
                 darkTheme={darkTheme}
                 user={user}
+                signOutUser={signOutUser}
             />
         );
     }
@@ -49,6 +58,9 @@ const mapDispatchToProps = function mapDispatchToProps(dispatch) {
         },
         toggleDarkTheme: function(darkTheme) {
             return dispatch(toggleDarkTheme(darkTheme));
+        },
+        signOutUser: function() {
+            return dispatch(signOutUser());
         }
     };
 };
@@ -57,6 +69,7 @@ NavigationContainer.propTypes = {
     updateVideos: PropTypes.func.isRequired,
     toggleDarkTheme: PropTypes.func.isRequired,
     darkTheme: PropTypes.bool.isRequired,
+    signOutUser: PropTypes.func.isRequired,
     user: PropTypes.shape({
         email: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,
