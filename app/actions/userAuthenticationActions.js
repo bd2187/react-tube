@@ -1,21 +1,35 @@
 import axios from "axios";
+import { decryptToken, saveTokenInLocalStorage } from "../config/jwtToken";
 import {
     USER_SIGNED_IN,
     USER_SIGNED_OUT,
     USER_SIGNED_UP,
     USER_AUTHENTICATION_LOADING,
-    USER_AUTHENTICATION_ERROR
+    USER_AUTHENTICATION_ERROR,
+    CLEARED_AUTH_ERRORS
 } from "./actionTypes";
 
-const decryptToken = function decryptToken(token) {
-    // decrypt token here
-    return {
-        id: "123abc",
-        username: "123abc",
-        email: "abc@gmail.com",
-        favorites: [],
-        token: "123456hash"
-    };
+const handleLoginProcess = function handleLoginProcess(serverRes, dispatch) {
+    const { success, data } = serverRes.data;
+    if (success) {
+        // Save token in local storage
+        saveTokenInLocalStorage(data.token);
+
+        // Set auth header
+        // setAuthorization(token);
+
+        // Decode JWT token
+        const user = decryptToken(data.token);
+
+        dispatch(logUserInfo(user));
+    } else {
+        dispatch({
+            type: USER_AUTHENTICATION_ERROR,
+            errorMessage:
+                data.message ||
+                "There was an error with verifying your email. Please try again."
+        });
+    }
 };
 
 export function signUpUser({ username, email, password, matchingPassword }) {
@@ -30,9 +44,7 @@ export function signUpUser({ username, email, password, matchingPassword }) {
                 matchingPassword
             })
             .then(function(res) {
-                const user = decryptToken();
-
-                dispatch({ type: USER_SIGNED_UP, user });
+                handleLoginProcess(res, dispatch);
             })
             .catch(function(err) {
                 dispatch({ type: USER_AUTHENTICATION_ERROR });
@@ -51,20 +63,10 @@ export function signInUser({ email, password }) {
                     password
                 })
                 .then(function(res) {
-                    const { success, data } = res.data;
-                    if (success) {
-                        // const user = decryptToken();
-                        // dispatch({ type: USER_SIGNED_IN, user });
-                    } else {
-                        dispatch({
-                            type: USER_AUTHENTICATION_ERROR,
-                            errorMessage:
-                                data.message ||
-                                "There was an error with verifying your email. Please try again."
-                        });
-                    }
+                    handleLoginProcess(res, dispatch);
                 })
                 .catch(function(err) {
+                    console.warn(err);
                     dispatch({
                         type: USER_AUTHENTICATION_ERROR,
                         errorMessage:
@@ -75,4 +77,28 @@ export function signInUser({ email, password }) {
     };
 }
 
-function signOutUser({}) {}
+export function logUserInfo(user) {
+    const { email, userID: id, token, username } = user;
+    return {
+        type: USER_SIGNED_IN,
+        user: {
+            email,
+            id,
+            token,
+            username
+        }
+    };
+}
+
+export function clearAuthErrors() {
+    return {
+        type: CLEARED_AUTH_ERRORS
+    };
+}
+
+export function signOutUser() {
+    localStorage.removeItem("token");
+    return {
+        type: USER_SIGNED_OUT
+    };
+}
