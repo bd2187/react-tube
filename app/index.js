@@ -9,6 +9,7 @@ import thunk from "redux-thunk";
 import reducers from "./reducers/reducers";
 import { decryptToken } from "./config/jwtToken";
 import { logUserInfo } from "./actions/userAuthenticationActions";
+import { toggleDarkTheme } from "./actions/themeActions";
 import NormalizeCss from "./styles/css/normalize.css";
 import MainCss from "./styles/css/main.css";
 
@@ -39,6 +40,14 @@ if (token) {
     //   tokenExp < currentTime
     //     ? store.dispatch(logOutUser())
     //     : store.dispatch(logUserInfo(decoded));
+}
+
+var darkTheme = localStorage.getItem("darkTheme");
+
+if (darkTheme === "true") {
+    store.dispatch(toggleDarkTheme(true));
+} else if (darkTheme === "false") {
+    store.dispatch(toggleDarkTheme(false));
 }
 
 render(
