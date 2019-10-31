@@ -4,7 +4,7 @@ import {
     USER_SIGNED_UP,
     USER_AUTHENTICATION_LOADING,
     USER_AUTHENTICATION_ERROR,
-    CLEAR_AUTH_ERRORS
+    CLEARED_AUTH_ERRORS
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -50,7 +50,20 @@ function user(state = initialState, action) {
                 loadingAuth: false
             };
 
-        case CLEAR_AUTH_ERRORS:
+        case USER_SIGNED_OUT:
+            return {
+                ...state,
+                id: "",
+                username: "",
+                email: "",
+                favorites: [],
+                token: "",
+                authError: false,
+                errorMessage: "",
+                loadingAuth: false
+            };
+
+        case CLEARED_AUTH_ERRORS:
             return {
                 ...state,
                 authError: false,
