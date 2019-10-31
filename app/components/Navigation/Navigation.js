@@ -12,7 +12,12 @@ import Logo from "../../utils/img/youtube.png";
  * This also handles toggling both the search-bar
  * and navigation menu.
  */
-const Navigation = function Navigation({ updateVideos, user }) {
+const Navigation = function Navigation({
+    updateVideos,
+    toggleDarkTheme,
+    darkTheme,
+    user
+}) {
     const [userQuery, setQuery] = useState("");
     const [searchBarOpened, setSearchBarOpened] = useState(false);
     const [navMenuOpened, setNavMenuOpened] = useState(false);
@@ -124,7 +129,12 @@ const Navigation = function Navigation({ updateVideos, user }) {
             </div>
 
             {navMenuOpened ? (
-                <NavigationMenu toggleNavMenu={toggleNavMenu} user={user} />
+                <NavigationMenu
+                    toggleNavMenu={toggleNavMenu}
+                    toggleDarkTheme={toggleDarkTheme}
+                    darkTheme={darkTheme}
+                    user={user}
+                />
             ) : null}
         </div>
     );
@@ -132,6 +142,8 @@ const Navigation = function Navigation({ updateVideos, user }) {
 
 Navigation.propTypes = {
     updateVideos: PropTypes.func.isRequired,
+    toggleDarkTheme: PropTypes.func.isRequired,
+    darkTheme: PropTypes.bool.isRequired,
     user: PropTypes.shape({
         email: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,

@@ -7,8 +7,16 @@ import styles from "./Navigation.module.css";
  * Renders the Navigation Menu whenever user clicks
  * user icon.
  */
-const NavigationMenu = function NavigationMenu({ toggleNavMenu, user }) {
+const NavigationMenu = function NavigationMenu({
+    toggleNavMenu,
+    toggleDarkTheme,
+    darkTheme,
+    user
+}) {
     const { email, id, username } = user;
+    const updateDarkTheme = function updateDarkTheme() {
+        toggleDarkTheme(!darkTheme);
+    };
     return (
         <>
             <div
@@ -54,9 +62,12 @@ const NavigationMenu = function NavigationMenu({ toggleNavMenu, user }) {
                         </Link>
                     </li>
                     <li className={styles["navigation-links__item"]}>
-                        <span className={styles["navigation-link-wrap"]}>
+                        <span
+                            className={styles["navigation-link-wrap"]}
+                            onClick={updateDarkTheme}
+                        >
                             <i className="fa fa-adjust"></i>
-                            Dark theme: On
+                            Dark theme: {darkTheme ? "On" : "Off"}
                         </span>
                     </li>
                     <li className={styles["navigation-links__item"]}>
@@ -73,6 +84,8 @@ const NavigationMenu = function NavigationMenu({ toggleNavMenu, user }) {
 
 NavigationMenu.propTypes = {
     toggleNavMenu: PropTypes.func.isRequired,
+    toggleDarkTheme: PropTypes.func.isRequired,
+    darkTheme: PropTypes.bool.isRequired,
     user: PropTypes.shape({
         email: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,
