@@ -1,263 +1,263 @@
-@import 'variables';
-@import 'mixins';
+@import "variables";
+@import "mixins";
 
 // ============ Default
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 h2,
 h3,
 p {
-  margin: 0;
+    margin: 0;
 }
 
 body {
-  background: $light-grey;
-  font-family: 'Roboto', sans-serif;
+    background: $light-grey;
+    font-family: "Roboto", sans-serif;
 }
 
 #app {
-  width: 100%;
-  padding-top: 4.665em;
+    width: 100%;
+    padding-top: 4.665em;
 }
 
 .container,
 .search-bar,
 .fa-search {
-  @include horizontalCenter(0);
+    @include horizontalCenter(0);
 }
 
 .container {
-  width: 95%;
-  max-width: 1600px;
+    width: 95%;
+    max-width: 1600px;
 }
 
 // ============
 
 .search-bar {
-  @include positioning(fixed, 0, 0, 0, 0, 10);
-  @include flexBox(center, center);
-  max-width: 1600px;
-  width: 100%;
-  height: 4.165em;
-  padding: .5em;
+    @include positioning(fixed, 0, 0, 0, 0, 10);
+    @include flexBox(center, center);
+    max-width: 1600px;
+    width: 100%;
+    height: 4.165em;
+    padding: 0.5em;
 
-  background: white;
-  text-align: center;
+    background: white;
+    text-align: center;
 
-  border-bottom: $lightGreyBorder;
+    border-bottom: $lightGreyBorder;
 
-  form {
-    @include mediaQuery($breakPoint) {
-      text-align: center;
+    form {
+        @include mediaQuery($breakPoint) {
+            text-align: center;
+        }
     }
-  }
 
-  .logo-link {
-    width: 12%;
-    max-width: 65.39px;
-    display: block;
-    &:focus {
-      outline: none;
+    .logo-link {
+        width: 12%;
+        max-width: 65.39px;
+        display: block;
+        &:focus {
+            outline: none;
+        }
+        .logo {
+            width: 100%;
+            margin: 0;
+            display: block;
+        }
+    } // end .logo-link
+
+    .form-box {
+        width: 88%;
+        display: block;
+        text-align: right;
     }
-    .logo {
-      width: 100%;
-      margin: 0;
-      display: block;
+
+    .logo-link,
+    .form-box {
+        float: left;
     }
-  } // end .logo-link
 
-  .form-box {
-    width: 88%;
-    display: block;
-    text-align: right;
-  }
-
-  .logo-link,
-  .form-box {
-    float: left;
-  }
-
-  input[type="text"],
-  button {
-    padding: .5em;
-    height: 2em;
-    font-size: 1em;
-    @include mediaQuery(1000px) {
-      font-size: 1.12em;
+    input[type="text"],
+    button {
+        padding: 0.5em;
+        height: 2em;
+        font-size: 1em;
+        @include mediaQuery(1000px) {
+            font-size: 1.12em;
+        }
+        border: $lightGreyBorder;
     }
-    border: $lightGreyBorder;
-  }
 
-  input[type="text"] {
-    width: 50%;
-    max-width: 582px;
-    display: inline-block;
-    vertical-align: top;
-    border-right: none;
-    box-shadow: inset 0px .5px 1px rgba(0, 0, 0, 0.2);
-    &:focus {
-      outline: none;
-      border: 1px solid $darkBlue;
+    input[type="text"] {
+        width: 50%;
+        max-width: 582px;
+        display: inline-block;
+        vertical-align: top;
+        border-right: none;
+        box-shadow: inset 0px 0.5px 1px rgba(0, 0, 0, 0.2);
+        &:focus {
+            outline: none;
+            border: 1px solid $darkBlue;
+        }
     }
-  }
 
-  button {
-    font-weight: 100;
-    color: darken($light-grey, 50%);
-    width: 40px;
-    background: lighten($light-grey, 3%);
-    position: relative;
+    button {
+        font-weight: 100;
+        color: darken($light-grey, 50%);
+        width: 40px;
+        background: lighten($light-grey, 3%);
+        position: relative;
 
-    .fa-search {
-      @include positioning(absolute, 50%, 0, inherit, 0, 1);
-      transform: translateY(-50%);
-    }
-    &:focus {
-      outline: none;
-    }
-  } // end button
+        .fa-search {
+            @include positioning(absolute, 50%, 0, inherit, 0, 1);
+            transform: translateY(-50%);
+        }
+        &:focus {
+            outline: none;
+        }
+    } // end button
 } // end .search-bar
 
 .main-box {
-  @include mediaQuery($breakPoint) {
-    max-width: 81.25em; /*1300px / 16em*/
-    @include horizontalCenter(0);
-  }
-
-  .selected-video,
-  .videos {
     @include mediaQuery($breakPoint) {
-      float: left;
+        max-width: 81.25em; /*1300px / 16em*/
+        @include horizontalCenter(0);
     }
-  }
+
+    .selected-video,
+    .videos {
+        @include mediaQuery($breakPoint) {
+            float: left;
+        }
+    }
 } // end .main-box
 
 .selected-video {
-  position: relative;
+    position: relative;
 
-  .aspect-ratio {
+    .aspect-ratio {
+        @include mediaQuery($breakPoint) {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 51%;
+        }
+        iframe {
+            width: 100%;
+            height: 56.25vw; /* 100/56.25 = 560/315 = 1.778 */
+            border: none;
+            @include mediaQuery($breakPoint) {
+                @include positioning(absolute, 0, inherit, inherit, 0, 1);
+                height: 100%;
+            }
+        } // end iframe
+    } // end .aspect-ratio
+
+    .video-description {
+        background: white;
+        margin: 0.3em 0;
+        padding: 0.8em;
+        @include mediaQuery($breakPoint) {
+            margin-top: 0.5em;
+        }
+
+        h3,
+        .publish-date,
+        .description {
+            margin: 0.5em 0;
+        }
+
+        .publish-date,
+        .description {
+            font-size: 0.8em;
+            @include mediaQuery(1000px) {
+                font-size: 1em;
+            }
+        }
+
+        h3 {
+            font-size: 1.2em;
+            @include mediaQuery(1000px) {
+                font-size: 1.5em;
+            }
+        }
+
+        .publish-date {
+            font-weight: 500;
+        }
+    } // end .video-description
+
     @include mediaQuery($breakPoint) {
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 51%;
+        width: 60%;
+        padding-right: 0.5em;
     }
-    iframe {
-      width: 100%;
-      height: 56.25vw; /* 100/56.25 = 560/315 = 1.778 */
-      border: none;
-      @include mediaQuery($breakPoint) {
-        @include positioning(absolute, 0, inherit, inherit, 0, 1);
-        height: 100%;
-      }
-    } // end iframe
-  } // end .aspect-ratio
-
-  .video-description {
-    background: white;
-    margin: .3em 0;
-    padding: .8em;
-    @include mediaQuery($breakPoint) {
-      margin-top: .5em;
-    }
-
-    h3,
-    .publish-date,
-    .description {
-      margin: .5em 0;
-    }
-
-    .publish-date,
-    .description {
-      font-size: .8em;
-      @include mediaQuery(1000px) {
-        font-size: 1em;
-      }
-    }
-
-    h3 {
-      font-size: 1.2em;
-      @include mediaQuery(1000px) {
-        font-size: 1.5em;
-      }
-    }
-
-    .publish-date {
-      font-weight: 500;
-    }
-  } // end .video-description
-
-  @include mediaQuery($breakPoint) {
-    width: 60%;
-    padding-right: .5em;
-  }
 } // end .selected-video
 
 .videos {
-  padding: .8em;
-  background: white;
-  margin: .5em 0;
-  @include mediaQuery($breakPoint) {
-    margin: 0;
-    width: 40%;
-  }
+    padding: 0.8em;
+    background: white;
+    margin: 0.5em 0;
+    @include mediaQuery($breakPoint) {
+        margin: 0;
+        width: 40%;
+    }
 }
 
 .video-list-item {
-  margin: .5em 0;
-  transition: all .3s;
-  &:hover {
-    cursor: pointer;
-    color: #4460f7;
-  }
-
-  .video-title {
-    width: 70%;
-    font-size: .8em;
-    padding-left: 1em;
-    @include mediaQuery(1000px) {
-      font-size: 1em;
+    margin: 0.5em 0;
+    transition: all 0.3s;
+    &:hover {
+        cursor: pointer;
+        color: #4460f7;
     }
-  }
-  .video-thumbnail {
-    width: 30%;
-  }
-  .video-thumbnail,
-  .video-title {
-    float: left;
-  } // end .video-title
+
+    .video-title {
+        width: 70%;
+        font-size: 0.8em;
+        padding-left: 1em;
+        @include mediaQuery(1000px) {
+            font-size: 1em;
+        }
+    }
+    .video-thumbnail {
+        width: 30%;
+    }
+    .video-thumbnail,
+    .video-title {
+        float: left;
+    } // end .video-title
 } // end .video-list-item
 
 .videos,
 .search-bar,
 .video-description {
-  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.2);
 }
 
 .loader {
-  border: 5px solid darken($light-grey, 30%);
-  border-top: 5px solid darken($light-grey, 10%);
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-  // margin: 5em auto;
+    border: 5px solid darken($light-grey, 30%);
+    border-top: 5px solid darken($light-grey, 10%);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    // margin: 5em auto;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .clearfix::after {
-  content: " ";
-  display: table;
-  clear: both;
+    content: " ";
+    display: table;
+    clear: both;
 }
