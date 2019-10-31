@@ -11,7 +11,8 @@ const NavigationMenu = function NavigationMenu({
     toggleNavMenu,
     toggleDarkTheme,
     darkTheme,
-    user
+    user,
+    signOutUser
 }) {
     const { email, id, username } = user;
     const updateDarkTheme = function updateDarkTheme() {
@@ -71,7 +72,10 @@ const NavigationMenu = function NavigationMenu({
                         </span>
                     </li>
                     <li className={styles["navigation-links__item"]}>
-                        <span className={styles["navigation-link-wrap"]}>
+                        <span
+                            className={styles["navigation-link-wrap"]}
+                            onClick={signOutUser}
+                        >
                             {/* <i className="fa fa-sign-out-alt"></i> */}
                             Sign out
                         </span>
@@ -86,6 +90,7 @@ NavigationMenu.propTypes = {
     toggleNavMenu: PropTypes.func.isRequired,
     toggleDarkTheme: PropTypes.func.isRequired,
     darkTheme: PropTypes.bool.isRequired,
+    signOutUser: PropTypes.func.isRequired,
     user: PropTypes.shape({
         email: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,
