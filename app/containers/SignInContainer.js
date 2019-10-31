@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AuthForm from "../components/AuthForm/AuthForm";
-import { signInUser } from "../actions/userAuthenticationActions";
+import {
+    signInUser,
+    clearAuthErrors
+} from "../actions/userAuthenticationActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -15,7 +18,8 @@ const SignInContainer = function SignInContainer({
     signInUser,
     authError,
     errorMessage,
-    loadingAuth
+    loadingAuth,
+    clearAuthErrors
 }) {
     const initialInputFields = {
         email: {
@@ -29,6 +33,11 @@ const SignInContainer = function SignInContainer({
             value: ""
         }
     };
+
+    // when component mounts, clear any errors
+    useEffect(function() {
+        clearAuthErrors();
+    }, []);
 
     const [inputFields, setInputFields] = useState(initialInputFields);
 
@@ -86,6 +95,9 @@ const mapDispatchToProps = function(dispatch) {
     return {
         signInUser: function(email, password) {
             return dispatch(signInUser({ email, password }));
+        },
+        clearAuthErrors: function() {
+            return dispatch(clearAuthErrors());
         }
     };
 };
@@ -95,7 +107,8 @@ SignInContainer.propTypes = {
     signInUser: PropTypes.func.isRequired,
     authError: PropTypes.bool.isRequired,
     errorMessage: PropTypes.string.isRequired,
-    loadingAuth: PropTypes.bool.isRequired
+    loadingAuth: PropTypes.bool.isRequired,
+    clearAuthErrors: PropTypes.func.isRequired
 };
 
 export default connect(
