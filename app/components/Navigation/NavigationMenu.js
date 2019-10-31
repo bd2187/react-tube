@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
 /**
@@ -35,16 +36,34 @@ const NavigationMenu = function NavigationMenu({ toggleNavMenu, user }) {
                 </div>
                 <ul className={styles["navigation-links"]}>
                     <li className={styles["navigation-links__item"]}>
-                        Your Channel
+                        <Link
+                            to="/dashboard"
+                            className={styles["navigation-link-wrap"]}
+                        >
+                            <i className="fa fa-user"></i>
+                            Your Channel
+                        </Link>
                     </li>
                     <li className={styles["navigation-links__item"]}>
-                        Manage your account
+                        <Link
+                            to="/my-account"
+                            className={styles["navigation-link-wrap"]}
+                        >
+                            <i className="fa fa-key"></i>
+                            Manage your account
+                        </Link>
                     </li>
                     <li className={styles["navigation-links__item"]}>
-                        Dark theme: On
+                        <span className={styles["navigation-link-wrap"]}>
+                            <i className="fa fa-adjust"></i>
+                            Dark theme: On
+                        </span>
                     </li>
                     <li className={styles["navigation-links__item"]}>
-                        Sign out
+                        <span className={styles["navigation-link-wrap"]}>
+                            {/* <i className="fa fa-sign-out-alt"></i> */}
+                            Sign out
+                        </span>
                     </li>
                 </ul>
             </div>
