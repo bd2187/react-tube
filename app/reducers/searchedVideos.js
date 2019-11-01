@@ -7,9 +7,40 @@ import {
 const initialState = {
     query: "",
     videos: [],
+    currentVideo: {},
     loadingVideoQuery: false,
     error: false
 };
+
+/**
+ *  Determines the correct video by search for the video in the
+ *  videos array with the matching videoID. If the videoID
+ *  doesn't match with any of the videos, default to the first video
+ *  in the array
+ *
+ *  @param Object videos
+ *  @param String videoID
+ *  @return Object currentVideo
+ */
+function determineCurrentVideo(videos = [], videoID = "") {
+    let currentVideo = {};
+    for (
+        let i = 0;
+        i < videos.length && Object.keys(currentVideo).length === 0;
+        i++
+    ) {
+        let video = videos[i];
+        if (video.id.videoId === videoID) {
+            currentVideo = video;
+        }
+    }
+
+    if (!currentVideo.hasOwnProperty("id")) {
+        currentVideo = videos[0];
+    }
+
+    return currentVideo;
+}
 
 /**
  *  Updates the searchedVideo property of redux store
@@ -24,9 +55,16 @@ function searchedVideos(state = initialState, action) {
             return { ...state, query: action.query, loadingVideoQuery: true };
 
         case UPDATED_VIDEOS:
+            // iterate through action.videos and find video that matched videoID
+            var currentVideo = determineCurrentVideo(
+                action.videos,
+                action.videoID
+            );
+
             return {
                 ...state,
                 videos: action.videos,
+                currentVideo,
                 error: false,
                 loadingVideoQuery: false
             };
