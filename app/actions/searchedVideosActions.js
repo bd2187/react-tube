@@ -6,16 +6,24 @@ import {
     ERROR_FETCHING_VIDEOS
 } from "./actionTypes";
 
-function updateVideos(query) {
+/**
+ *
+ *
+ *
+ */
+function updateVideos(query = "javascript", videoID = "") {
     return function(dispatch) {
         dispatch({ type: LOADED_VIDEO_QUERY, query });
 
         return SearchVideos({ key: API_KEY, term: query }, function(data) {
             try {
-                return data && data.length > 0
-                    ? dispatch({ type: UPDATED_VIDEOS, videos: data })
-                    : dispatch({ type: ERROR_FETCHING_VIDEOS });
+                if (data && data.length > 0) {
+                    dispatch({ type: UPDATED_VIDEOS, videos: data, videoID });
+                } else {
+                    dispatch({ type: ERROR_FETCHING_VIDEOS });
+                }
             } catch (err) {
+                console.error(err);
                 return dispatch({ type: ERROR_FETCHING_VIDEOS });
             }
         });
