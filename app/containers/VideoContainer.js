@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import Video from "../components/Video/Video";
+import updateVideos from "../actions/searchedVideosActions";
 
-const VideoContainer = props => {
-    return <h1>VideoContainer</h1>;
+const VideoContainer = ({ updateVideos, match }) => {
+    useEffect(function() {
+        const { searchedVideo } = match.params;
+        const { videoID } = match.params;
+        updateVideos(searchedVideo, videoID);
+    }, []);
+
+    return <Video />;
 };
 
 var mapStateToProps = function(store) {
@@ -11,7 +19,15 @@ var mapStateToProps = function(store) {
     };
 };
 
+var mapDispatchToProps = function(dispatch) {
+    return {
+        updateVideos: function(searchedVideo, videoID) {
+            return dispatch(updateVideos(searchedVideo, videoID));
+        }
+    };
+};
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(VideoContainer);
