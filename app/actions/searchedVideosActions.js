@@ -20,11 +20,17 @@ function updateVideos(query = "javascript", videoID = "") {
                 if (data && data.length > 0) {
                     dispatch({ type: UPDATED_VIDEOS, videos: data, videoID });
                 } else {
-                    dispatch({ type: ERROR_FETCHING_VIDEOS });
+                    dispatch({
+                        type: ERROR_FETCHING_VIDEOS,
+                        errorMessage: `0 results for ${query}`
+                    });
                 }
             } catch (err) {
                 console.error(err);
-                return dispatch({ type: ERROR_FETCHING_VIDEOS });
+                return dispatch({
+                    type: ERROR_FETCHING_VIDEOS,
+                    errorMessage: `Looks like there was an error fetching videos. Please try again`
+                });
             }
         });
     };
