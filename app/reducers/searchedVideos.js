@@ -9,7 +9,8 @@ const initialState = {
     videos: [],
     currentVideo: {},
     loadingVideoQuery: false,
-    error: false
+    error: false,
+    errorMessage: ""
 };
 
 /**
@@ -66,11 +67,17 @@ function searchedVideos(state = initialState, action) {
                 videos: action.videos,
                 currentVideo,
                 error: false,
+                errorMessage: "",
                 loadingVideoQuery: false
             };
 
         case ERROR_FETCHING_VIDEOS:
-            return { ...state, error: true, loadingVideoQuery: false };
+            return {
+                ...state,
+                error: true,
+                loadingVideoQuery: false,
+                errorMessage: action.errorMessage
+            };
 
         default:
             return state;
