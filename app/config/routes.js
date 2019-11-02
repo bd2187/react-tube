@@ -65,13 +65,13 @@ const routes = (
     <Router>
         <NavigationContainer />
         <Switch>
+            <Route exact path="/signin" component={SignInContainer} />
+            <Route exact path="/signup" component={SignUpContainer} />
             <Route
                 exact
                 path="/:searchedVideo?/:videoID?"
                 component={VideoContainer}
             />
-            <Route exact path="/signin" component={SignInContainer} />
-            <Route exact path="/signup" component={SignUpContainer} />
         </Switch>
     </Router>
 );
