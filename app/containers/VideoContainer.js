@@ -3,12 +3,24 @@ import { connect } from "react-redux";
 import Video from "../components/Video/Video";
 import updateVideos from "../actions/searchedVideosActions";
 
-const VideoContainer = ({ updateVideos, match }) => {
+const VideoContainer = ({ searchedVideos, updateVideos, match, history }) => {
+    const { searchedVideo } = match.params;
+    const { videoID } = match.params;
     useEffect(function() {
-        const { searchedVideo } = match.params;
-        const { videoID } = match.params;
         updateVideos(searchedVideo, videoID);
     }, []);
+
+    // Update URL params
+    useEffect(
+        function() {
+            var pathname = searchedVideos.currentVideo.id
+                ? `/${searchedVideos.query}/${searchedVideos.currentVideo.id.videoId}`
+                : `/${searchedVideos.query}`;
+
+            history.push({ pathname });
+        },
+        [searchedVideos.query, searchedVideos.currentVideo.id]
+    );
 
     return <Video />;
 };
