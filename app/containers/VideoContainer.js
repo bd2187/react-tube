@@ -19,10 +19,10 @@ const VideoContainer = ({ searchedVideos, updateVideos, match, history }) => {
 
             history.push({ pathname });
         },
-        [searchedVideos.query, searchedVideos.currentVideo.id]
+        [searchedVideos.currentVideo.id]
     );
 
-    return <Video />;
+    return <Video searchedVideos={searchedVideos} />;
 };
 
 var mapStateToProps = function(store) {
