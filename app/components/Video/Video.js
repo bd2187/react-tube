@@ -1,12 +1,11 @@
 import React from "react";
+import styles from "./Video.module.css";
 import SelectedVideo from "./SelectedVideo";
 import VideosList from "./VideosList";
 
 const VideoWrap = function VideoWrap({ currentVideo, videos }) {
-    console.log(currentVideo);
-
     return (
-        <div>
+        <div className={styles["video-wrap"]}>
             <SelectedVideo selectedVideo={currentVideo} />
             <VideosList videos={videos} />
         </div>
@@ -30,7 +29,7 @@ const Video = function Video({ searchedVideos }) {
     // display videos
 
     return (
-        <>
+        <div className={styles["video-content-container"]}>
             {loadingVideoQuery ? <p>loading</p> : null}
 
             {error ? <p>error</p> : null}
@@ -38,7 +37,7 @@ const Video = function Video({ searchedVideos }) {
             {videos.length > 0 ? (
                 <VideoWrap currentVideo={currentVideo} videos={videos} />
             ) : null}
-        </>
+        </div>
     );
 };
 
