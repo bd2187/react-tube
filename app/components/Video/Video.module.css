@@ -21,7 +21,51 @@
     height: 56.25vw; /* 100/56.25 = 560/315 = 1.778 */
 }
 
-.selected-video__description {
+.selected-video-info {
     padding: 0 10px;
     margin: 10px 0;
+}
+
+.selected-video-info-header {
+    position: relative;
+}
+
+.selected-video-info-header__title {
+    width: 85%;
+}
+
+.selected-video-info-header__toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.selected-video-info-user-actions {
+    padding: 8px 5px;
+    text-align: right;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    margin: 10px 0;
+    color: grey;
+}
+
+.selected-video-info__description {
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.selected-video-info--display {
+    display: block;
+}
+
+.selected-video-info--display .selected-video-info-header__toggle {
+    transform: rotate(180deg);
+}
+
+.selected-video-info--hide .selected-video-info__description {
+    display: none;
+}
+
+.selected-video-info-header__publish-date {
+    margin: 8px 0;
 }
