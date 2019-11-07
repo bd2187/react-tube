@@ -9,15 +9,18 @@ const VideosList = function VideosList({ videos }) {
     return (
         <ul className={styles["videos-list"]}>
             {videos.map(function(video) {
+                var encodedTitle = encodeURIComponent(
+                    video.snippet.title
+                ).toLowerCase();
                 return (
                     <li
                         key={video.etag}
                         className={styles["videos-list__item"]}
                     >
                         <Link
-                            to={`/${encodeURIComponent(video.snippet.title)}/${
-                                video.id.videoId
-                            }`}
+                            to={{
+                                pathname: `/${encodedTitle}/${video.id.videoId}`
+                            }}
                             className={styles["videos-list__link"]}
                         >
                             <img
