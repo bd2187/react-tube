@@ -5,6 +5,8 @@
 .video-wrap {
     /* width: 95%; */
     /* margin: 10px auto; */
+    overflow: auto;
+    background: #121212;
 }
 
 .selected-video {
@@ -24,6 +26,11 @@
 .selected-video-info {
     padding: 0 10px;
     margin: 10px 0;
+}
+
+.selected-video-info__paragraph {
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
 }
 
 .selected-video-info-header {
@@ -68,4 +75,24 @@
 
 .selected-video-info-header__publish-date {
     margin: 8px 0;
+}
+
+.videos-list__item {
+    margin: 10px 0;
+}
+
+.videos-list__link {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.videos-list__thumbnail {
+    width: 50%;
+}
+
+.videos-list__title {
+    font-size: 14px;
+    width: 48%;
 }
