@@ -3,26 +3,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import styles from "./Video.module.css";
 
 const VideosList = function VideosList({ videos }) {
     return (
-        <ul>
+        <ul className={styles["videos-list"]}>
             {videos.map(function(video) {
                 return (
-                    <li key={video.etag}>
+                    <li
+                        key={video.etag}
+                        className={styles["videos-list__item"]}
+                    >
                         <Link
                             to={`/${encodeURIComponent(video.snippet.title)}/${
                                 video.id.videoId
                             }`}
+                            className={styles["videos-list__link"]}
                         >
-                            <div>
-                                <img
-                                    src={video.snippet.thumbnails.high.url}
-                                    alt={`${video.snippet.title} video`}
-                                    className="video-thumbnail"
-                                />
-                            </div>
-                            <h2 className="video-title">
+                            <img
+                                src={video.snippet.thumbnails.high.url}
+                                alt={`${video.snippet.title} video`}
+                                className={styles["videos-list__thumbnail"]}
+                            />
+
+                            <h2 className={styles["videos-list__title"]}>
                                 {video.snippet.title}
                             </h2>
                         </Link>
