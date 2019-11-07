@@ -53,7 +53,7 @@ function SelectedVideo({ selectedVideo }) {
                     >
                         Published on {date(selectedVideo.snippet.publishedAt)}
                     </p>
-                    <p className="description">
+                    <p className={styles["selected-video-info__paragraph"]}>
                         {selectedVideo.snippet.description}
                     </p>
                 </div>
