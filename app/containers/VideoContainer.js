@@ -14,20 +14,21 @@ const VideoContainer = ({ searchedVideos, updateVideos, match, history }) => {
         updateVideos(searchedVideo, videoID);
     }, []);
 
-    // for user search
+    // useEffect for user's searched video
     useEffect(
         function() {
             scrollToTop();
+
             var pathname = searchedVideos.currentVideo.id
                 ? `/${searchedVideos.query}/${searchedVideos.currentVideo.id.videoId}`
                 : `/${searchedVideos.query}`;
 
-            history.push({ pathname });
+            window.history.pushState({}, "title", pathname);
         },
         [searchedVideos.currentVideo.id]
     );
 
-    // Update URL params
+    // useEffect for user clicking on video link
     useEffect(
         function() {
             if (
